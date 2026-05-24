@@ -3,7 +3,7 @@
 Marketing and documentation site for **[ExoLab](https://exolab.llc)**, a solo R&D lab building open exoskeleton control systems for neurological mobility conditions (SCA3 / spinocerebellar ataxia).
 
 ## Hosting Information
-The site is hosted at name cheap.com. By going to the left side panel and clicking on the "Hosting List" you can see eolab,llc in a list;Click on that and a "Renew" button pops up.  Click on that to brinng up a pull down men where you can select "go top cPanel".  Once on cPanel search for "file manager"" clicking on that will bring up a directory - the public_html sub directory is where the index.html file lives.
+The site is hosted at **[namecheap.com](https://namecheap.com)**. By going to the left side panel and clicking on the "Hosting List" you can see eolab,llc in a list;Click on that and a "Renew" button pops up.  Click on that to brinng up a pull down men where you can select "go top cPanel".  Once on cPanel search for "file manager"" clicking on that will bring up a directory - the public_html sub directory is where the index.html file lives.
 "
 
 ## About the Project
