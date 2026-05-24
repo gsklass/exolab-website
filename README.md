@@ -2,8 +2,11 @@
 
 Marketing and documentation site for **[ExoLab](https://exolab.llc)**, a solo R&D lab building open exoskeleton control systems for neurological mobility conditions (SCA3 / spinocerebellar ataxia).
 
-## About the Project
+## Hosting Information
+The site is hosted at name cheap.com. By going to the left side panel and clicking on the "Hosting List" you can see eolab,llc in a list;Click on that and a "Renew" button pops up.  Click on that to brinng up a pull down men where you can select "go top cPanel".  Once on cPanel search for "file manager"" clicking on that will bring up a directory - the public_html sub directory is where the index.html file lives.
+"
 
+## About the Project
 ExoLab is run by Greg Klassen — a 30-year DSP engineer, retired CEO, and SCA3 patient — working from Leesburg, Virginia. The goal: design and build a wearable powered exoskeleton for cerebellar ataxia, where the challenge is balance and gait variability, not paralysis.
 
 The site covers:
