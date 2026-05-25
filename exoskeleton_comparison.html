@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Exoskeleton Comparison 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;600;700&family=IBM+Plex+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0c10;
+    --panel: #11151c;
+    --border: #1e2730;
+    --accent: #00e5ff;
+    --accent2: #ff6b35;
+    --medical: #39ff8f;
+    --consumer: #00e5ff;
+    --text: #d4dce8;
+    --muted: #5a6a7e;
+    --head-bg: #0d1117;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 13px;
+    min-height: 100vh;
+    padding: 24px 16px 48px;
+  }
+
+  header {
+    text-align: center;
+    margin-bottom: 32px;
+  }
+
+  header h1 {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 2.2rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    text-shadow: 0 0 24px rgba(0,229,255,0.4);
+    margin-bottom: 6px;
+  }
+
+  header p {
+    color: var(--muted);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .legend {
+    display: flex;
+    gap: 24px;
+    justify-content: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  .dot {
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .dot-consumer { background: var(--consumer); }
+  .dot-medical { background: var(--medical); }
+
+  .filter-bar {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+  }
+
+  .filter-btn {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    color: var(--muted);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 6px 16px;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .filter-btn:hover, .filter-btn.active {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: rgba(0,229,255,0.06);
+  }
+
+  .table-wrapper {
+    overflow-x: auto;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    box-shadow: 0 0 40px rgba(0,229,255,0.04);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 1100px;
+  }
+
+  thead th {
+    background: var(--head-bg);
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    padding: 12px 14px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+    white-space: nowrap;
+    position: sticky;
+    top: 0;
+  }
+
+  thead th:first-child { color: var(--accent); }
+
+  tbody tr {
+    border-bottom: 1px solid rgba(30,39,48,0.7);
+    transition: background 0.15s;
+  }
+
+  tbody tr:hover { background: rgba(0,229,255,0.04); }
+
+  tbody tr.medical-row { border-left: 3px solid var(--medical); }
+  tbody tr.consumer-row { border-left: 3px solid var(--consumer); }
+
+  tbody td {
+    padding: 11px 14px;
+    vertical-align: top;
+    line-height: 1.5;
+  }
+
+  .company {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text);
+    letter-spacing: 0.04em;
+  }
+
+  .model {
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 2px;
+  }
+
+  .price {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  .price-consumer { color: var(--consumer); }
+  .price-medical { color: var(--medical); }
+  .price-na { color: var(--muted); font-size: 11px; }
+
+  .spec-val {
+    color: var(--text);
+    white-space: nowrap;
+  }
+
+  .spec-na { color: var(--muted); font-style: italic; font-size: 11px; }
+
+  .tag {
+    display: inline-block;
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    padding: 2px 7px;
+    border-radius: 1px;
+    font-weight: 600;
+    margin-top: 3px;
+  }
+
+  .tag-consumer { background: rgba(0,229,255,0.12); color: var(--consumer); border: 1px solid rgba(0,229,255,0.25); }
+  .tag-medical { background: rgba(57,255,143,0.1); color: var(--medical); border: 1px solid rgba(57,255,143,0.25); }
+  .tag-fda { background: rgba(255,107,53,0.12); color: var(--accent2); border: 1px solid rgba(255,107,53,0.25); }
+  .tag-opensource { background: rgba(255,220,0,0.10); color: #ffd700; border: 1px solid rgba(255,220,0,0.25); }
+
+  .app-icon { font-size: 14px; }
+
+  .note {
+    font-size: 10px;
+    color: var(--muted);
+    margin-top: 3px;
+    line-height: 1.4;
+  }
+
+  .section-divider td {
+    background: var(--head-bg);
+    color: var(--muted);
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    padding: 6px 14px;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+
+  footer {
+    margin-top: 24px;
+    text-align: center;
+    color: var(--muted);
+    font-size: 10px;
+    letter-spacing: 0.06em;
+  }
+
+  .hidden { display: none; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>⚡ Exoskeleton Comparison Matrix</h1>
+  <p>Consumer &amp; Medical Lower-Limb Exoskeletons — May 2026 Research</p>
+</header>
+
+<div class="legend">
+  <div class="legend-item"><span class="dot dot-consumer"></span> Consumer / Fitness</div>
+  <div class="legend-item"><span class="dot dot-medical"></span> Medical / Clinical</div>
+</div>
+
+<div class="filter-bar">
+  <button class="filter-btn active" onclick="filterRows('all', this)">All</button>
+  <button class="filter-btn" onclick="filterRows('consumer', this)">Consumer</button>
+  <button class="filter-btn" onclick="filterRows('medical', this)">Medical</button>
+</div>
+
+<div class="table-wrapper">
+<table>
+  <thead>
+    <tr>
+      <th>Company / Model</th>
+      <th>Price (USD)</th>
+      <th>Motor Count</th>
+      <th>Peak Power</th>
+      <th>Max Torque</th>
+      <th>Weight</th>
+      <th>Battery Range</th>
+      <th>Modes / AI</th>
+      <th>App / Interface</th>
+      <th>Use Case</th>
+      <th>Notes</th>
+    </tr>
+  </thead>
+  <tbody>
+
+    <!-- ── CONSUMER: HYPERSHELL ── -->
+    <tr class="section-divider"><td colspan="11">▸ Hypershell — Consumer Fitness &amp; Outdoor</td></tr>
+
+    <tr class="consumer-row" data-cat="consumer">
+      <td><div class="company">Hypershell</div><div class="model">X Go</div><span class="tag tag-consumer">Consumer</span></td>
+      <td><span class="price price-consumer">$899</span></td>
+      <td class="spec-val">2 hip motors</td>
+      <td class="spec-val">400 W</td>
+      <td class="spec-val">~16 N·m</td>
+      <td class="spec-val">~2.2 kg</td>
+      <td class="spec-val">15 km</td>
+      <td>6 modes, AI MotionEngine LIT</td>
+      <td>Hypershell+ app</td>
+      <td>Entry walking/hiking</td>
+      <td class="note">IP54, -10°C, foldable. No charger included.</td>
+    </tr>
+
+    <tr class="consumer-row" data-cat="consumer">
+      <td><div class="company">Hypershell</div><div class="model">X Pro</div><span class="tag tag-consumer">Consumer</span></td>
+      <td><span class="price price-consumer">$899</span></td>
+      <td class="spec-val">2 hip motors</td>
+      <td class="spec-val">800 W</td>
+      <td class="spec-val">32 N·m</td>
+      <td class="spec-val">~2.2 kg</td>
+      <td class="spec-val">17.5 km</td>
+      <td>10 modes (Walk, Run, Stairs, Hills, Cycling…), AI MotionEngine</td>
+      <td>Hypershell+ app</td>
+      <td>Hiking, cycling, mixed terrain</td>
+      <td class="note">IP54, -20°C. 2 ms response. Carbon fiber + aluminum frame.</td>
+    </tr>
+
+    <tr class="consumer-row" data-cat="consumer">
+      <td><div class="company">Hypershell</div><div class="model">X Carbon</div><span class="tag tag-consumer">Consumer</span></td>
+      <td><span class="price price-consumer">$1,299–1,599</span></td>
+      <td class="spec-val">2 hip motors</td>
+      <td class="spec-val">800 W</td>
+      <td class="spec-val">32 N·m</td>
+      <td class="spec-val">1.8 kg</td>
+      <td class="spec-val">17.5 km</td>
+      <td>10 modes, AI MotionEngine</td>
+      <td>Hypershell+ app</td>
+      <td>Hiking, extreme terrain</td>
+      <td class="note">Carbon fiber + titanium alloy. 4,000 km durability rating. Anti-cold battery.</td>
+    </tr>
+
+    <tr class="consumer-row" data-cat="consumer">
+      <td><div class="company">Hypershell</div><div class="model">X Ultra</div><span class="tag tag-consumer">Consumer</span></td>
+      <td><span class="price price-consumer">$1,799–1,999</span></td>
+      <td class="spec-val">2 hip motors</td>
+      <td class="spec-val">1,000 W</td>
+      <td class="spec-val">~22 N·m</td>
+      <td class="spec-val">~2.3 kg</td>
+      <td class="spec-val">30 km</td>
+      <td>12 modes, AI MotionEngine</td>
+      <td>Hypershell+ app</td>
+      <td>Long-distance hiking, daily use</td>
+      <td class="note">IP54, -20°C. Titanium + carbon fiber. 12 sensors incl. barometer, gyro.</td>
+    </tr>
+
+    <!-- NEW X SERIES (May 2026) -->
+    <tr class="consumer-row" data-cat="consumer">
+      <td><div class="company">Hypershell</div><div class="model">X Pro S <span style="color:var(--accent2);font-size:10px;">NEW 2026</span></div><span class="tag tag-consumer">Consumer</span></td>
+      <td><span class="price price-consumer">$999</span></td>
+      <td class="spec-val">2 hip motors</td>
+      <td class="spec-val">800 W</td>
+      <td class="spec-val">18 N·m</td>
+      <td class="spec-val">~2.1 kg</td>
+      <td class="spec-val">17.5 km</td>
+      <td>HyperIntuition™ AI (0.31s sync), TÜV Rheinland verified</td>
+      <td>Hypershell+ app</td>
+      <td>Lighter outdoor activity</td>
+      <td class="note">Launched May 2026. Soft package. Max 20 km/h.</td>
+    </tr>
+
+    <tr class="consumer-row" data-cat="consumer">
+      <td><div class="company">Hypershell</div><div class="model">X Max S <span style="color:var(--accent2);font-size:10px;">NEW 2026</span></div><span class="tag tag-consumer">Consumer</span></td>
+      <td><span class="price price-consumer">$1,499</span></td>
+      <td class="spec-val">2 hip motors</td>
+      <td class="spec-val">1,000 W</td>
+      <td class="spec-val">22 N·m</td>
+      <td class="spec-val">~2.2 kg</td>
+      <td class="spec-val">30 km</td>
+      <td>HyperIntuition™ AI, 36× processing leap</td>
+      <td>Hypershell+ app</td>
+      <td>Heavy outdoor / load carry</td>
+      <td class="note">Titanium alloy waist/back. SpiralTwill 3000 carbon fiber. Max 25 km/h.</td>
+    </tr>
+
+    <tr class="consumer-row" data-cat="consumer">
+      <td><div class="company">Hypershell</div><div class="model">X Ultra S <span style="color:var(--accent2);font-size:10px;">NEW 2026</span></div><span class="tag tag-consumer">Consumer</span></td>
+      <td><span class="price price-consumer">$1,999</span></td>
+      <td class="spec-val">2 hip motors</td>
+      <td class="spec-val">1,000 W</td>
+      <td class="spec-val">22 N·m</td>
+      <td class="spec-val">~2.2 kg</td>
+      <td class="spec-val">30 km × 2 batteries</td>
+      <td>HyperIntuition™ AI, 0.31s intent sync</td>
+      <td>Hypershell+ app</td>
+      <td>Elite outdoor / search &amp; rescue</td>
+      <td class="note">3D-printed titanium hip tube. 0.7 mm wall carbon. ↓HR 42%, ↓O₂ 39%.</td>
+    </tr>
+
+    <!-- ── CONSUMER: DNSYS ── -->
+    <tr class="section-divider"><td colspan="11">▸ DNSYS — Consumer Fitness &amp; Mobility</td></tr>
+
+    <tr class="consumer-row" data-cat="consumer">
+      <td><div class="company">DNSYS</div><div class="model">X1 Carbon</div><span class="tag tag-consumer">Consumer</span></td>
+      <td><span class="price price-consumer">$999–1,099</span></td>
+      <td class="spec-val">1 hip motor</td>
+      <td class="spec-val">900 W (1.2 HP)</td>
+      <td class="spec-val">40 N·m (50 N·m/kg)</td>
+      <td class="spec-val">1.6 kg</td>
+      <td class="spec-val">20 km / 7 hr</td>
+      <td>AI intent prediction, adaptive learning, dual-core 240 MHz processor</td>
+      <td>DNSYS app (iOS &amp; Android)</td>
+      <td>Hiking, running, daily mobility</td>
+      <td class="note">3s battery swap. 9 safety modules. USB-C PD fast charge.</td>
+    </tr>
+
+    <tr class="consumer-row" data-cat="consumer">
+      <td><div class="company">DNSYS</div><div class="model">X1 Carbon Pro</div><span class="tag tag-consumer">Consumer</span></td>
+      <td><span class="price price-consumer">$1,899</span></td>
+      <td class="spec-val">1 hip motor</td>
+      <td class="spec-val">900 W (1.2 HP)</td>
+      <td class="spec-val">40 N·m</td>
+      <td class="spec-val">1.6 kg (actual ~2.2 kg)</td>
+      <td class="spec-val">40 km (2 batteries)</td>
+      <td>AI intent prediction, regenerative mode, 9 safety modules</td>
+      <td>DNSYS app</td>
+      <td>Heavy hiking, workout, running</td>
+      <td class="note">Titanium alloy + carbon fiber. 3s battery swap. Max speed 27 km/h.</td>
+    </tr>
+
+    <!-- ── CONSUMER: AstroShell ── -->
+    <tr class="section-divider"><td colspan="11">▸ AstroShell — Consumer Fitness</td></tr>
+
+    <tr class="consumer-row" data-cat="consumer">
+      <td><div class="company">AstroShell</div><div class="model">Alpha 1</div><span class="tag tag-consumer">Consumer</span></td>
+      <td><span class="price price-consumer">$1,099 (sale $1,099)</span></td>
+      <td class="spec-val">2 motors (est.)</td>
+      <td class="spec-val">1,000 W peak</td>
+      <td class="spec-val">40 N·m continuous</td>
+      <td class="spec-val">2.0 kg (4.4 lbs)</td>
+      <td class="spec-val">14.9 mi (24 km)</td>
+      <td>AI Active System, adaptive assist</td>
+      <td>Companion app (est.)</td>
+      <td>Hiking, walking endurance</td>
+      <td class="note">Aerospace magnesium alloy. Swappable "pocket" batteries. 6 units in stock.</td>
+    </tr>
+
+    <!-- ── CONSUMER: ASCENTIZ ── -->
+    <tr class="section-divider"><td colspan="11">▸ Ascentiz — Consumer Modular / Open-Source Platform</td></tr>
+
+    <tr class="consumer-row" data-cat="consumer">
+      <td><div class="company">Ascentiz</div><div class="model">H1 Pro (Hip Module)</div><span class="tag tag-consumer">Consumer</span><br><span class="tag tag-opensource">Open-Source BodyOS</span></td>
+      <td><span class="price price-consumer">$1,049</span><div class="note">Early backer $699 · Kickstarter #1 funded exo</div></td>
+      <td class="spec-val">1 hip motor (quasi-direct-drive)</td>
+      <td class="spec-val">900 W (1.2 HP)</td>
+      <td class="spec-val">36 N·m peak (52 N·m/kg)</td>
+      <td class="spec-val">1.75 kg (w/o battery)</td>
+      <td class="spec-val">~78 Wh battery</td>
+      <td>AI Motion Cortex, 10+ motion scenarios, 0.2s recognition, Ease/ACC/Train modes</td>
+      <td>Companion app + open-source BodyOS SDK</td>
+      <td>Hiking, running, daily mobility — hip propulsion focus</td>
+      <td class="note">iF Design Award 2026. Max 28 km/h sprint assist. 35% effort reduction. Folds to A4. ⚡ BodyOS = ExoLab integration opportunity.</td>
+    </tr>
+
+    <tr class="consumer-row" data-cat="consumer">
+      <td><div class="company">Ascentiz</div><div class="model">K1 Pro (Knee Module)</div><span class="tag tag-consumer">Consumer</span><br><span class="tag tag-opensource">Open-Source BodyOS</span></td>
+      <td><span class="price price-consumer">$1,149</span><div class="note">Early backer $799</div></td>
+      <td class="spec-val">1 knee motor (cable-drive)</td>
+      <td class="spec-val">900 W (1.2 HP)</td>
+      <td class="spec-val">48 N·m peak</td>
+      <td class="spec-val">~2.25 kg (w/o battery)</td>
+      <td class="spec-val">~78 Wh battery</td>
+      <td>AI Motion Cortex, 10+ motion scenarios, 0.2s recognition</td>
+      <td>Companion app + open-source BodyOS SDK</td>
+      <td>Endurance, load-bearing, joint support — knee stabilization focus</td>
+      <td class="note">Cable-drive optimized for knee biomechanics. Supports up to 216 lbs load. Swappable with H1 Pro on same Exo-Belt hub.</td>
+    </tr>
+
+    <tr class="consumer-row" data-cat="consumer">
+      <td><div class="company">Ascentiz</div><div class="model">H+K Bundle</div><span class="tag tag-consumer">Consumer</span><br><span class="tag tag-opensource">Open-Source BodyOS</span></td>
+      <td><span class="price price-consumer">$1,498</span><div class="note">Early backer $1,298</div></td>
+      <td class="spec-val">2 motors (1 hip + 1 knee, used independently)</td>
+      <td class="spec-val">900 W (1.2 HP)</td>
+      <td class="spec-val">36 N·m (H) / 48 N·m (K)</td>
+      <td class="spec-val">1.75–2.25 kg per module</td>
+      <td class="spec-val">~78 Wh per module</td>
+      <td>Full Ascentiz AI Motion Cortex; modules swap one at a time via Exo-Belt hub</td>
+      <td>Companion app + open-source BodyOS SDK</td>
+      <td>Full-activity coverage — switch hip/knee per terrain</td>
+      <td class="note">World's first modular exo system. One-click H/K module swap. BodyOS enables custom control layer development.</td>
+    </tr>
+
+    <!-- ── MEDICAL: LIFEWARD ── -->
+    <tr class="section-divider"><td colspan="11">▸ Lifeward (formerly ReWalk Robotics) — FDA-Cleared Medical</td></tr>
+
+    <tr class="medical-row" data-cat="medical">
+      <td><div class="company">Lifeward</div><div class="model">ReWalk 7</div><span class="tag tag-medical">Medical</span><br><span class="tag tag-fda">FDA Cleared</span></td>
+      <td><span class="price price-medical">~$75,000–95,000</span><div class="note">Medicare reimbursable; $94,617 CMS rate, 20% copay</div></td>
+      <td class="spec-val">4 motors (2 hip, 2 knee)</td>
+      <td class="spec-na">N/A (gait assist)</td>
+      <td class="spec-na">Not published</td>
+      <td class="spec-val">~23 kg (51 lbs)</td>
+      <td class="spec-val">Session-based</td>
+      <td>2 customizable walking speeds, cloud connectivity, smartwatch display, crutch control unit</td>
+      <td>MyReWalk app, crutch control, smartwatch</td>
+      <td>SCI T7–L5, home &amp; community ambulation, stairs &amp; curbs</td>
+      <td class="note">FDA cleared March 2025. Launched April 2025. First device with FDA stair clearance.</td>
+    </tr>
+
+    <!-- ── MEDICAL: EKSO BIONICS ── -->
+    <tr class="section-divider"><td colspan="11">▸ Ekso Bionics — FDA-Cleared Medical</td></tr>
+
+    <tr class="medical-row" data-cat="medical">
+      <td><div class="company">Ekso Bionics</div><div class="model">Ekso Indego Personal</div><span class="tag tag-medical">Medical</span><br><span class="tag tag-fda">FDA Cleared</span></td>
+      <td><span class="price price-medical">~$75,000–95,000</span><div class="note">Medicare, VA, workers comp coverage</div></td>
+      <td class="spec-val">4 motors (2 hip, 2 knee)</td>
+      <td class="spec-na">N/A (gait assist)</td>
+      <td class="spec-na">Limited (BLDC flat motors)</td>
+      <td class="spec-val">~14 kg (31 lbs)</td>
+      <td class="spec-val">Session-based (Li-ion, 2 batteries)</td>
+      <td>Wireless software control, individualized gait settings, step speed / difficulty adjust</td>
+      <td>iOS &amp; Android wireless app</td>
+      <td>SCI T3–L5, home &amp; community; NO stair clearance</td>
+      <td class="note">Lightest medical exoskeleton. Modular 5-piece design. Stores in duffle bag. Carbon-fiber thermoplastic.</td>
+    </tr>
+
+    <tr class="medical-row" data-cat="medical">
+      <td><div class="company">Ekso Bionics</div><div class="model">EksoNR</div><span class="tag tag-medical">Medical</span><br><span class="tag tag-fda">FDA Cleared</span></td>
+      <td><span class="price price-medical">~$100,000+</span><div class="note">Clinical/rehab centers only</div></td>
+      <td class="spec-val">4 motors (2 hip, 2 knee)</td>
+      <td class="spec-na">N/A (rehab gait)</td>
+      <td class="spec-na">Not published</td>
+      <td class="spec-val">~20 kg (44 lbs)</td>
+      <td class="spec-val">Session-based</td>
+      <td>Multiple gait modes, early mobility tools, stroke/SCI/ABI/MS modes</td>
+      <td>iOS app (therapist-controlled)</td>
+      <td>Rehab only: stroke, SCI, ABI, MS</td>
+      <td class="note">Only exoskeleton FDA cleared for ABI and MS. Not for home use.</td>
+    </tr>
+
+  </tbody>
+</table>
+</div>
+
+<footer>
+  <p>Data compiled May 2026 · Consumer specs from manufacturer &amp; Amazon listings · Medical pricing via CMS/Medicare data · Torque figures are peak unless noted as continuous · "N/A" = specification not published or not applicable to device category · Ascentiz BodyOS noted as open-source ExoLab integration candidate</p>
+</footer>
+
+<script>
+  function filterRows(cat, btn) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const rows = document.querySelectorAll('tbody tr[data-cat]');
+    rows.forEach(row => {
+      if (cat === 'all' || row.dataset.cat === cat) {
+        row.classList.remove('hidden');
+      } else {
+        row.classList.add('hidden');
+      }
+    });
+    // Show/hide section dividers
+    document.querySelectorAll('.section-divider').forEach(div => {
+      const next = div.nextElementSibling;
+      if (!next || next.classList.contains('hidden')) {
+        if (cat !== 'all') div.classList.add('hidden');
+        else div.classList.remove('hidden');
+      } else {
+        div.classList.remove('hidden');
+      }
+    });
+  }
+</script>
+
+</body>
+</html>

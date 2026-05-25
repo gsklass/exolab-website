@@ -676,6 +676,14 @@ h2 em { font-style: normal; color: var(--teal); }
   transition: border-color 0.2s;
   width: 100%;
 }
+.form-field select {
+  background: var(--bg3);
+  color: var(--white);
+}
+.form-field select option {
+  background: var(--bg3);
+  color: var(--white);
+}
 .form-field input:focus, .form-field textarea:focus {
   border-color: rgba(0,229,200,0.5);
   background: rgba(0,229,200,0.03);
@@ -776,6 +784,7 @@ footer {
     <li><a href="#skills">DSP Skills</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#resources">Resources</a></li>
+    <li><a href="market-landscape.html">Market</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
   <div class="nav-badge">ACTIVE R&amp;D</div>
@@ -841,7 +850,7 @@ footer {
     <div class="about-grid">
       <div class="about-text reveal">
         <p>
-          <strong>Greg Klassen</strong> spent four decades in digital signal processing — designing real-time filter architectures, tuning PID loops, and building embedded control systems from the ground up. He then spent years as a CEO, before a diagnosis of <em>Spinocerebellar Ataxia Type 3 (SCA3)</em> changed the plan.
+          <strong>Greg Klassen</strong> spent three decades in digital signal processing — designing real-time filter architectures, tuning PID loops, and building embedded control systems from the ground up. He then spent years as a CEO, before a diagnosis of <em>Spinocerebellar Ataxia Type 3 (SCA3)</em> changed the plan.
         </p>
         <p>
           SCA3 is a progressive neurological condition that attacks coordination, balance, and gait. Commercial exoskeletons exist — but none are designed for cerebellar ataxia, where the challenge is balance, not paralysis.
@@ -1351,20 +1360,22 @@ footer {
         </div>
       </div>
       <div class="reveal">
-        <form class="contact-form" onsubmit="handleSubmit(event)">
+        <form id="contact-form" class="contact-form">
           <div class="form-row">
             <div class="form-field">
               <label>Name</label>
-              <input type="text" placeholder="Your name" required>
+              <input type="text" name="name" placeholder="Your name" required data-fs-field>
+              <span data-fs-error="name" style="color:#ff6b6b; font-size:0.75rem; font-family:var(--font-mono);"></span>
             </div>
             <div class="form-field">
               <label>Email</label>
-              <input type="email" placeholder="your@email.com" required>
+              <input type="email" name="email" placeholder="your@email.com" required data-fs-field>
+              <span data-fs-error="email" style="color:#ff6b6b; font-size:0.75rem; font-family:var(--font-mono);"></span>
             </div>
           </div>
           <div class="form-field">
             <label>Context</label>
-            <select>
+            <select name="context" data-fs-field>
               <option value="">Select one...</option>
               <option>Researcher / Clinician</option>
               <option>Engineer / Builder</option>
@@ -1376,14 +1387,16 @@ footer {
           </div>
           <div class="form-field">
             <label>Message</label>
-            <textarea placeholder="What brings you to ExoLab?"></textarea>
+            <textarea name="message" placeholder="What brings you to ExoLab?" data-fs-field></textarea>
+            <span data-fs-error="message" style="color:#ff6b6b; font-size:0.75rem; font-family:var(--font-mono);"></span>
           </div>
-          <button type="submit" class="btn-primary" style="cursor:pointer; border:none; width:100%; text-align:center; padding:1rem;">
+          <span data-fs-error style="color:#ff6b6b; font-size:0.75rem; font-family:var(--font-mono); margin-bottom:0.5rem;"></span>
+          <button type="submit" class="btn-primary" style="cursor:pointer; border:none; width:100%; text-align:center; padding:1rem;" data-fs-submit-btn>
             Send Message →
           </button>
           <p class="form-note">// This is an active research lab, not a product company. Messages are read personally by Greg Klassen. Response time: 24–48 hours.</p>
         </form>
-        <div id="form-success" style="display:none; padding:2rem; border:1px solid rgba(0,229,200,0.3); background:var(--teal-glow); text-align:center;">
+        <div data-fs-success style="display:none; padding:2rem; border:1px solid rgba(0,229,200,0.3); background:var(--teal-glow); text-align:center;">
           <p style="font-family:var(--font-mono); color:var(--teal); font-size:0.85rem; letter-spacing:0.1em;">✓ MESSAGE RECEIVED<br><span style="color:var(--muted); font-size:0.75rem; margin-top:0.5rem; display:block;">Greg will be in touch within 48 hours.</span></p>
         </div>
       </div>
@@ -1491,13 +1504,6 @@ function showPhase(n) {
   document.querySelectorAll('.phase-detail').forEach((d, i) => d.classList.toggle('active', i === n));
 }
 
-// Form
-function handleSubmit(e) {
-  e.preventDefault();
-  e.target.style.display = 'none';
-  document.getElementById('form-success').style.display = 'block';
-}
-
 // Nav scroll effect
 window.addEventListener('scroll', () => {
   const nav = document.querySelector('nav');
@@ -1506,5 +1512,10 @@ window.addEventListener('scroll', () => {
     : 'rgba(7,11,18,0.85)';
 });
 </script>
+<script>
+  window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
+  formspree('initForm', { formElement: '#contact-form', formId: 'xeedlzpg' });
+</script>
+<script src="https://unpkg.com/@formspree/ajax@1" defer></script>
 </body>
 </html>
