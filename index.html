@@ -767,6 +767,65 @@ footer {
   .section-inner { padding: 4rem 1.5rem; }
   footer { flex-direction: column; gap: 1rem; text-align: center; }
 }
+
+/* ── MARKET LANDSCAPE SECTION ── */
+#market { background: var(--bg2); }
+.ml-legend { display: flex; gap: 24px; margin-bottom: 1rem; flex-wrap: wrap; }
+.ml-legend-item { display: flex; align-items: center; gap: 8px; font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; }
+.ml-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+.ml-dot-consumer { background: var(--teal); }
+.ml-dot-medical  { background: #39ff8f; }
+.ml-filter-bar { display: flex; gap: 10px; margin-bottom: 1.5rem; flex-wrap: wrap; }
+.ml-filter-btn { background: var(--bg3); border: 1px solid var(--border); color: var(--muted); font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; padding: 6px 18px; cursor: pointer; transition: all 0.2s; }
+.ml-filter-btn:hover, .ml-filter-btn.active { border-color: var(--teal); color: var(--teal); background: rgba(0,229,200,0.06); }
+.ml-table-wrap { overflow-x: auto; border: 1px solid var(--border); box-shadow: 0 0 40px rgba(0,229,200,0.04); margin-bottom: 2rem; }
+.ml-table { width: 100%; border-collapse: collapse; min-width: 1100px; }
+.ml-table thead th { background: var(--bg); font-family: var(--font-display); font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--muted); padding: 12px 14px; text-align: left; border-bottom: 1px solid var(--border); white-space: nowrap; }
+.ml-table thead th:first-child { color: var(--teal); }
+.ml-table tbody tr { border-bottom: 1px solid rgba(0,229,200,0.06); transition: background 0.15s; }
+.ml-table tbody tr:hover { background: rgba(0,229,200,0.04); }
+.ml-table tbody tr.ml-medical  { border-left: 3px solid #39ff8f; }
+.ml-table tbody tr.ml-consumer { border-left: 3px solid var(--teal); }
+.ml-table tbody td { padding: 11px 14px; vertical-align: top; line-height: 1.5; }
+.ml-company { font-family: var(--font-display); font-size: 12px; font-weight: 700; color: var(--white); letter-spacing: 0.06em; }
+.ml-model { font-size: 11px; color: var(--muted); margin-top: 3px; font-family: var(--font-mono); }
+.ml-price { font-family: var(--font-display); font-size: 12px; font-weight: 700; white-space: nowrap; }
+.ml-price-consumer { color: var(--teal); }
+.ml-price-medical  { color: #39ff8f; }
+.ml-spec { color: var(--text); white-space: nowrap; }
+.ml-na { color: var(--muted); font-style: italic; font-size: 11px; }
+.ml-tag { display: inline-block; font-size: 9px; text-transform: uppercase; letter-spacing: 0.08em; padding: 2px 7px; font-family: var(--font-mono); font-weight: 500; margin-top: 4px; }
+.ml-tag-consumer { background: rgba(0,229,200,0.1); color: var(--teal); border: 1px solid rgba(0,229,200,0.25); }
+.ml-tag-medical  { background: rgba(57,255,143,0.08); color: #39ff8f; border: 1px solid rgba(57,255,143,0.25); }
+.ml-tag-fda      { background: rgba(240,165,0,0.1); color: var(--amber); border: 1px solid rgba(240,165,0,0.3); }
+.ml-tag-open     { background: rgba(255,220,0,0.1); color: #ffd700; border: 1px solid rgba(255,220,0,0.28); }
+.ml-note { font-size: 10px; color: var(--muted); margin-top: 4px; line-height: 1.4; max-width: 220px; }
+.ml-divider td { background: var(--bg); color: var(--teal); font-family: var(--font-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.15em; padding: 6px 14px; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.ml-hidden { display: none; }
+.ml-footer { font-family: var(--font-mono); font-size: 10px; color: var(--muted); letter-spacing: 0.06em; line-height: 1.7; margin-top: 1rem; }
+
+/* ── OTTER.AI TRANSCRIPT VIEWER ─────────────────────────── */
+.otter-upload { border: 2px dashed rgba(0,229,200,0.35); background: rgba(0,229,200,0.03); border-radius: 4px; padding: 2rem; text-align: center; cursor: pointer; transition: border-color 0.2s, background 0.2s; font-family: var(--font-mono); font-size: 0.8rem; color: var(--muted); }
+.otter-upload:hover, .otter-upload.drag-over { border-color: var(--teal); background: rgba(0,229,200,0.07); color: var(--teal); }
+.otter-tree { font-family: var(--font-mono); font-size: 0.78rem; background: var(--card); border: 1px solid var(--border); border-radius: 4px; padding: 1rem; min-height: 60px; }
+.otter-dir-row { display: flex; align-items: center; gap: 0.4rem; padding: 0.3rem 0; cursor: pointer; user-select: none; color: var(--teal); }
+.otter-dir-row:hover { color: var(--white); }
+.otter-dir-chevron { display: inline-block; transition: transform 0.15s; }
+.otter-dir-chevron.collapsed { transform: rotate(-90deg); }
+.otter-dir-files { padding-left: 1.4rem; }
+.otter-dir-files.collapsed { display: none; }
+.otter-file-row { display: flex; align-items: center; justify-content: space-between; padding: 0.22rem 0.4rem; border-radius: 3px; cursor: pointer; color: var(--muted); transition: background 0.15s, color 0.15s; }
+.otter-file-row:hover { background: rgba(0,229,200,0.06); color: var(--white); }
+.otter-file-row.active { background: rgba(0,229,200,0.1); color: var(--teal); }
+.otter-file-name { display: flex; align-items: center; gap: 0.4rem; }
+.otter-file-date { font-size: 0.63rem; color: var(--muted); opacity: 0.7; }
+.otter-delete { background: none; border: none; color: var(--muted); cursor: pointer; font-size: 1rem; padding: 0 0.2rem; opacity: 0; transition: opacity 0.15s, color 0.15s; line-height: 1; }
+.otter-file-row:hover .otter-delete { opacity: 1; }
+.otter-delete:hover { color: #ff5555; }
+.otter-viewer { display: none; background: var(--card); border: 1px solid rgba(0,229,200,0.15); border-radius: 4px; padding: 1.2rem 1.4rem; }
+.otter-viewer-title { font-family: var(--font-mono); font-size: 0.68rem; color: var(--teal); letter-spacing: 0.12em; margin-bottom: 0.8rem; word-break: break-all; }
+.otter-viewer-content { font-family: var(--font-mono); font-size: 0.73rem; color: var(--muted); line-height: 1.85; white-space: pre-wrap; max-height: 420px; overflow-y: auto; }
+.otter-placeholder { padding: 3rem 1rem; font-family: var(--font-mono); font-size: 0.75rem; color: var(--muted); text-align: center; }
 </style>
 </head>
 <body>
@@ -785,7 +844,8 @@ footer {
     <li><a href="#skills">DSP Skills</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#resources">Resources</a></li>
-    <li><a href="market-landscape.html">Market</a></li>
+    <li><a href="#otterAI">Transcripts</a></li>
+    <li><a href="#market">Market</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
   <div class="nav-badge">ACTIVE R&amp;D</div>
@@ -1321,6 +1381,221 @@ footer {
   </div>
 </section>
 
+<!-- ── OTTER.AI TRANSCRIPTS ──────────────────────────────── -->
+<section id="otterAI" style="background:var(--bg2);">
+  <div class="section-inner">
+    <p class="section-label">// Field Notes</p>
+    <h2>Otter<em>AI</em> Transcripts</h2>
+    <p class="section-intro">Upload Otter.ai transcript exports (.txt) from your Android phone. Files are stored in your browser only — nothing is sent to a server. Organized by event or conference name.</p>
+
+    <div style="display:grid; grid-template-columns:1fr 1.7fr; gap:1.5rem; margin-top:1.5rem; align-items:start;" class="reveal">
+
+      <!-- Upload zone + directory tree -->
+      <div>
+        <div class="otter-upload" id="otterDrop"
+             onclick="document.getElementById('otterFileInput').click()"
+             ondragover="event.preventDefault(); this.classList.add('drag-over')"
+             ondragleave="this.classList.remove('drag-over')"
+             ondrop="event.preventDefault(); this.classList.remove('drag-over'); otterUpload(event.dataTransfer.files)">
+          <div style="font-size:1.5rem; margin-bottom:0.4rem;">📂</div>
+          <div>Drop .txt files here</div>
+          <div style="margin-top:0.3rem; font-size:0.68rem; opacity:0.7;">or click to choose files</div>
+          <input type="file" id="otterFileInput" accept=".txt" multiple
+                 style="display:none" onchange="otterUpload(this.files)">
+        </div>
+        <div class="otter-tree" id="otterTree" style="margin-top:0.9rem;">
+          <span style="color:var(--muted);">📁 otterAI/ — no files yet</span>
+        </div>
+      </div>
+
+      <!-- Transcript viewer -->
+      <div>
+        <div class="otter-viewer" id="otterViewer">
+          <div class="otter-viewer-title" id="otterViewerTitle"></div>
+          <div class="otter-viewer-content" id="otterViewerContent"></div>
+        </div>
+        <div class="otter-placeholder" id="otterPlaceholder">
+          Select a file from the tree to view its transcript.
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── MARKET LANDSCAPE ──────────────────────────────────── -->
+<section id="market">
+  <div class="section-inner">
+    <p class="section-label">// Hardware Context</p>
+    <h2>Exoskeleton <em>Market Landscape</em></h2>
+    <p class="section-intro">ExoLab's Layer 1/2 control systems are designed to run <em style="color:var(--teal);font-style:normal;font-weight:600;">on top of</em> commercial exoskeleton hardware — not replace it. The table below surveys the current market: consumer hip-assist devices and FDA-cleared medical exoskeletons.</p>
+
+    <div class="ml-legend" style="margin-top:1.5rem;">
+      <div class="ml-legend-item"><span class="ml-dot ml-dot-consumer"></span> Consumer / Fitness</div>
+      <div class="ml-legend-item"><span class="ml-dot ml-dot-medical"></span> Medical / Clinical</div>
+    </div>
+
+    <div class="ml-filter-bar">
+      <button class="ml-filter-btn active" onclick="filterMarket('all',this)">All</button>
+      <button class="ml-filter-btn" onclick="filterMarket('consumer',this)">Consumer</button>
+      <button class="ml-filter-btn" onclick="filterMarket('medical',this)">Medical</button>
+    </div>
+
+    <div class="ml-table-wrap">
+    <table class="ml-table">
+      <thead>
+        <tr>
+          <th>Company / Model</th>
+          <th>Price (USD)</th>
+          <th>Motor Count</th>
+          <th>Peak Power</th>
+          <th>Max Torque</th>
+          <th>Weight</th>
+          <th>Battery Range</th>
+          <th>Modes / AI</th>
+          <th>App / Interface</th>
+          <th>Use Case</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <tr class="ml-divider"><td colspan="11">▸ Hypershell — Consumer Fitness &amp; Outdoor</td></tr>
+        <tr class="ml-consumer" data-mlcat="consumer">
+          <td><div class="ml-company">Hypershell</div><div class="ml-model">X Go</div><span class="ml-tag ml-tag-consumer">Consumer</span></td>
+          <td><span class="ml-price ml-price-consumer">$899</span></td>
+          <td class="ml-spec">2 hip motors</td><td class="ml-spec">400 W</td><td class="ml-spec">~16 N·m</td><td class="ml-spec">~2.2 kg</td><td class="ml-spec">15 km</td>
+          <td>6 modes, AI MotionEngine LIT</td><td>Hypershell+ app</td><td>Entry walking/hiking</td>
+          <td><div class="ml-note">IP54, -10°C, foldable. No charger included.</div></td>
+        </tr>
+        <tr class="ml-consumer" data-mlcat="consumer">
+          <td><div class="ml-company">Hypershell</div><div class="ml-model">X Pro</div><span class="ml-tag ml-tag-consumer">Consumer</span></td>
+          <td><span class="ml-price ml-price-consumer">$899</span></td>
+          <td class="ml-spec">2 hip motors</td><td class="ml-spec">800 W</td><td class="ml-spec">32 N·m</td><td class="ml-spec">~2.2 kg</td><td class="ml-spec">17.5 km</td>
+          <td>10 modes (Walk, Run, Stairs, Hills…), AI MotionEngine</td><td>Hypershell+ app</td><td>Hiking, cycling, mixed terrain</td>
+          <td><div class="ml-note">IP54, -20°C. 2 ms response. Carbon fiber + aluminum frame.</div></td>
+        </tr>
+        <tr class="ml-consumer" data-mlcat="consumer">
+          <td><div class="ml-company">Hypershell</div><div class="ml-model">X Carbon</div><span class="ml-tag ml-tag-consumer">Consumer</span></td>
+          <td><span class="ml-price ml-price-consumer">$1,299–1,599</span></td>
+          <td class="ml-spec">2 hip motors</td><td class="ml-spec">800 W</td><td class="ml-spec">32 N·m</td><td class="ml-spec">1.8 kg</td><td class="ml-spec">17.5 km</td>
+          <td>10 modes, AI MotionEngine</td><td>Hypershell+ app</td><td>Hiking, extreme terrain</td>
+          <td><div class="ml-note">Carbon fiber + titanium alloy. 4,000 km durability rating.</div></td>
+        </tr>
+        <tr class="ml-consumer" data-mlcat="consumer">
+          <td><div class="ml-company">Hypershell</div><div class="ml-model">X Ultra</div><span class="ml-tag ml-tag-consumer">Consumer</span></td>
+          <td><span class="ml-price ml-price-consumer">$1,799–1,999</span></td>
+          <td class="ml-spec">2 hip motors</td><td class="ml-spec">1,000 W</td><td class="ml-spec">~22 N·m</td><td class="ml-spec">~2.3 kg</td><td class="ml-spec">30 km</td>
+          <td>12 modes, AI MotionEngine</td><td>Hypershell+ app</td><td>Long-distance hiking, daily use</td>
+          <td><div class="ml-note">IP54, -20°C. Titanium + carbon fiber. 12 sensors incl. barometer, gyro.</div></td>
+        </tr>
+        <tr class="ml-consumer" data-mlcat="consumer">
+          <td><div class="ml-company">Hypershell</div><div class="ml-model">X Pro S <span style="color:var(--amber);font-size:9px;font-family:var(--font-mono);">NEW 2026</span></div><span class="ml-tag ml-tag-consumer">Consumer</span></td>
+          <td><span class="ml-price ml-price-consumer">$999</span></td>
+          <td class="ml-spec">2 hip motors</td><td class="ml-spec">800 W</td><td class="ml-spec">18 N·m</td><td class="ml-spec">~2.1 kg</td><td class="ml-spec">17.5 km</td>
+          <td>HyperIntuition™ AI (0.31s sync), TÜV Rheinland verified</td><td>Hypershell+ app</td><td>Lighter outdoor activity</td>
+          <td><div class="ml-note">Launched May 2026. Soft package. Max 20 km/h.</div></td>
+        </tr>
+        <tr class="ml-consumer" data-mlcat="consumer">
+          <td><div class="ml-company">Hypershell</div><div class="ml-model">X Max S <span style="color:var(--amber);font-size:9px;font-family:var(--font-mono);">NEW 2026</span></div><span class="ml-tag ml-tag-consumer">Consumer</span></td>
+          <td><span class="ml-price ml-price-consumer">$1,499</span></td>
+          <td class="ml-spec">2 hip motors</td><td class="ml-spec">1,000 W</td><td class="ml-spec">22 N·m</td><td class="ml-spec">~2.2 kg</td><td class="ml-spec">30 km</td>
+          <td>HyperIntuition™ AI, 36× processing leap</td><td>Hypershell+ app</td><td>Heavy outdoor / load carry</td>
+          <td><div class="ml-note">Titanium alloy waist/back. SpiralTwill 3000 carbon fiber. Max 25 km/h.</div></td>
+        </tr>
+        <tr class="ml-consumer" data-mlcat="consumer">
+          <td><div class="ml-company">Hypershell</div><div class="ml-model">X Ultra S <span style="color:var(--amber);font-size:9px;font-family:var(--font-mono);">NEW 2026</span></div><span class="ml-tag ml-tag-consumer">Consumer</span></td>
+          <td><span class="ml-price ml-price-consumer">$1,999</span></td>
+          <td class="ml-spec">2 hip motors</td><td class="ml-spec">1,000 W</td><td class="ml-spec">22 N·m</td><td class="ml-spec">~2.2 kg</td><td class="ml-spec">30 km × 2 batteries</td>
+          <td>HyperIntuition™ AI, 0.31s intent sync</td><td>Hypershell+ app</td><td>Elite outdoor / search &amp; rescue</td>
+          <td><div class="ml-note">3D-printed titanium hip tube. 0.7 mm wall carbon. ↓HR 42%, ↓O₂ 39%.</div></td>
+        </tr>
+
+        <tr class="ml-divider"><td colspan="11">▸ DNSYS — Consumer Fitness &amp; Mobility</td></tr>
+        <tr class="ml-consumer" data-mlcat="consumer">
+          <td><div class="ml-company">DNSYS</div><div class="ml-model">X1 Carbon</div><span class="ml-tag ml-tag-consumer">Consumer</span></td>
+          <td><span class="ml-price ml-price-consumer">$999–1,099</span></td>
+          <td class="ml-spec">1 hip motor</td><td class="ml-spec">900 W (1.2 HP)</td><td class="ml-spec">40 N·m</td><td class="ml-spec">1.6 kg</td><td class="ml-spec">20 km / 7 hr</td>
+          <td>AI intent prediction, adaptive learning, dual-core 240 MHz</td><td>DNSYS app (iOS &amp; Android)</td><td>Hiking, running, daily mobility</td>
+          <td><div class="ml-note">3s battery swap. 9 safety modules. USB-C PD fast charge.</div></td>
+        </tr>
+        <tr class="ml-consumer" data-mlcat="consumer">
+          <td><div class="ml-company">DNSYS</div><div class="ml-model">X1 Carbon Pro</div><span class="ml-tag ml-tag-consumer">Consumer</span></td>
+          <td><span class="ml-price ml-price-consumer">$1,899</span></td>
+          <td class="ml-spec">1 hip motor</td><td class="ml-spec">900 W (1.2 HP)</td><td class="ml-spec">40 N·m</td><td class="ml-spec">1.6 kg (actual ~2.2 kg)</td><td class="ml-spec">40 km (2 batteries)</td>
+          <td>AI intent prediction, regenerative mode, 9 safety modules</td><td>DNSYS app</td><td>Heavy hiking, workout, running</td>
+          <td><div class="ml-note">Titanium alloy + carbon fiber. 3s battery swap. Max speed 27 km/h.</div></td>
+        </tr>
+
+        <tr class="ml-divider"><td colspan="11">▸ AstroShell — Consumer Fitness</td></tr>
+        <tr class="ml-consumer" data-mlcat="consumer">
+          <td><div class="ml-company">AstroShell</div><div class="ml-model">Alpha 1</div><span class="ml-tag ml-tag-consumer">Consumer</span></td>
+          <td><span class="ml-price ml-price-consumer">$1,099</span></td>
+          <td class="ml-spec">2 motors (est.)</td><td class="ml-spec">1,000 W peak</td><td class="ml-spec">40 N·m continuous</td><td class="ml-spec">2.0 kg</td><td class="ml-spec">24 km</td>
+          <td>AI Active System, adaptive assist</td><td>Companion app (est.)</td><td>Hiking, walking endurance</td>
+          <td><div class="ml-note">Aerospace magnesium alloy. Swappable "pocket" batteries.</div></td>
+        </tr>
+
+        <tr class="ml-divider"><td colspan="11">▸ Ascentiz — Consumer Modular / Open-Source Platform</td></tr>
+        <tr class="ml-consumer" data-mlcat="consumer">
+          <td><div class="ml-company">Ascentiz</div><div class="ml-model">H1 Pro (Hip Module)</div><span class="ml-tag ml-tag-consumer">Consumer</span><br><span class="ml-tag ml-tag-open">Open-Source BodyOS</span></td>
+          <td><span class="ml-price ml-price-consumer">$1,049</span><div class="ml-note">Early backer $699 · Kickstarter #1 funded exo</div></td>
+          <td class="ml-spec">1 hip motor (quasi-direct-drive)</td><td class="ml-spec">900 W (1.2 HP)</td><td class="ml-spec">36 N·m peak</td><td class="ml-spec">1.75 kg (w/o battery)</td><td class="ml-spec">~78 Wh battery</td>
+          <td>AI Motion Cortex, 10+ motion scenarios, 0.2s recognition</td><td>Companion app + open-source BodyOS SDK</td><td>Hiking, running, daily mobility</td>
+          <td><div class="ml-note">iF Design Award 2026. 35% effort reduction. Folds to A4. ⚡ BodyOS = ExoLab integration opportunity.</div></td>
+        </tr>
+        <tr class="ml-consumer" data-mlcat="consumer">
+          <td><div class="ml-company">Ascentiz</div><div class="ml-model">K1 Pro (Knee Module)</div><span class="ml-tag ml-tag-consumer">Consumer</span><br><span class="ml-tag ml-tag-open">Open-Source BodyOS</span></td>
+          <td><span class="ml-price ml-price-consumer">$1,149</span><div class="ml-note">Early backer $799</div></td>
+          <td class="ml-spec">1 knee motor (cable-drive)</td><td class="ml-spec">900 W (1.2 HP)</td><td class="ml-spec">48 N·m peak</td><td class="ml-spec">~2.25 kg (w/o battery)</td><td class="ml-spec">~78 Wh battery</td>
+          <td>AI Motion Cortex, 10+ motion scenarios, 0.2s recognition</td><td>Companion app + open-source BodyOS SDK</td><td>Endurance, load-bearing, joint support</td>
+          <td><div class="ml-note">Cable-drive optimized for knee biomechanics. Supports up to 216 lbs load.</div></td>
+        </tr>
+        <tr class="ml-consumer" data-mlcat="consumer">
+          <td><div class="ml-company">Ascentiz</div><div class="ml-model">H+K Bundle</div><span class="ml-tag ml-tag-consumer">Consumer</span><br><span class="ml-tag ml-tag-open">Open-Source BodyOS</span></td>
+          <td><span class="ml-price ml-price-consumer">$1,498</span><div class="ml-note">Early backer $1,298</div></td>
+          <td class="ml-spec">2 motors (1 hip + 1 knee)</td><td class="ml-spec">900 W (1.2 HP)</td><td class="ml-spec">36 N·m (H) / 48 N·m (K)</td><td class="ml-spec">1.75–2.25 kg per module</td><td class="ml-spec">~78 Wh per module</td>
+          <td>Full Ascentiz AI Motion Cortex; modules swap one at a time via Exo-Belt hub</td><td>Companion app + open-source BodyOS SDK</td><td>Full-activity coverage — switch hip/knee per terrain</td>
+          <td><div class="ml-note">World's first modular exo system. BodyOS enables custom control layer development.</div></td>
+        </tr>
+
+        <tr class="ml-divider"><td colspan="11">▸ Lifeward (formerly ReWalk Robotics) — FDA-Cleared Medical</td></tr>
+        <tr class="ml-medical" data-mlcat="medical">
+          <td><div class="ml-company">Lifeward</div><div class="ml-model">ReWalk 7</div><span class="ml-tag ml-tag-medical">Medical</span><br><span class="ml-tag ml-tag-fda">FDA Cleared</span></td>
+          <td><span class="ml-price ml-price-medical">~$75,000–95,000</span><div class="ml-note">Medicare reimbursable; $94,617 CMS rate, 20% copay</div></td>
+          <td class="ml-spec">4 motors (2 hip, 2 knee)</td><td class="ml-na">N/A</td><td class="ml-na">Not published</td><td class="ml-spec">~23 kg (51 lbs)</td><td class="ml-spec">Session-based</td>
+          <td>2 customizable walking speeds, cloud connectivity, smartwatch display</td><td>MyReWalk app, crutch control, smartwatch</td><td>SCI T7–L5, home &amp; community ambulation, stairs &amp; curbs</td>
+          <td><div class="ml-note">FDA cleared March 2025. First device with FDA stair clearance.</div></td>
+        </tr>
+
+        <tr class="ml-divider"><td colspan="11">▸ Ekso Bionics — FDA-Cleared Medical</td></tr>
+        <tr class="ml-medical" data-mlcat="medical">
+          <td><div class="ml-company">Ekso Bionics</div><div class="ml-model">Ekso Indego Personal</div><span class="ml-tag ml-tag-medical">Medical</span><br><span class="ml-tag ml-tag-fda">FDA Cleared</span></td>
+          <td><span class="ml-price ml-price-medical">~$75,000–95,000</span><div class="ml-note">Medicare, VA, workers comp coverage</div></td>
+          <td class="ml-spec">4 motors (2 hip, 2 knee)</td><td class="ml-na">N/A</td><td class="ml-na">Limited (BLDC flat motors)</td><td class="ml-spec">~14 kg (31 lbs)</td><td class="ml-spec">Session-based</td>
+          <td>Wireless software control, individualized gait settings</td><td>iOS &amp; Android wireless app</td><td>SCI T3–L5, home &amp; community; NO stair clearance</td>
+          <td><div class="ml-note">Lightest medical exoskeleton. Modular 5-piece design. Carbon-fiber thermoplastic.</div></td>
+        </tr>
+        <tr class="ml-medical" data-mlcat="medical">
+          <td><div class="ml-company">Ekso Bionics</div><div class="ml-model">EksoNR</div><span class="ml-tag ml-tag-medical">Medical</span><br><span class="ml-tag ml-tag-fda">FDA Cleared</span></td>
+          <td><span class="ml-price ml-price-medical">~$100,000+</span><div class="ml-note">Clinical/rehab centers only</div></td>
+          <td class="ml-spec">4 motors (2 hip, 2 knee)</td><td class="ml-na">N/A</td><td class="ml-na">Not published</td><td class="ml-spec">~20 kg (44 lbs)</td><td class="ml-spec">Session-based</td>
+          <td>Multiple gait modes, stroke/SCI/ABI/MS modes</td><td>iOS app (therapist-controlled)</td><td>Rehab only: stroke, SCI, ABI, MS</td>
+          <td><div class="ml-note">Only exoskeleton FDA cleared for ABI and MS. Not for home use.</div></td>
+        </tr>
+
+      </tbody>
+    </table>
+    </div>
+
+    <div class="ml-footer">
+      <p>Torque figures are peak unless noted · "N/A" = spec not published or not applicable</p>
+      <p style="margin-top:0.4rem;">⚡ Ascentiz BodyOS is an open-source SDK — the only consumer platform explicitly inviting third-party control layer development, making it the primary ExoLab hardware integration candidate.</p>
+      <p style="margin-top:0.4rem;"><a href="market-landscape.html" style="color:var(--teal);text-decoration:none;">View full market landscape page →</a></p>
+    </div>
+  </div>
+</section>
+
 <!-- ── CONTACT ───────────────────────────────────────────── -->
 <section id="contact">
   <div class="section-inner">
@@ -1519,6 +1794,143 @@ window.addEventListener('scroll', () => {
     ? 'rgba(7,11,18,0.97)'
     : 'rgba(7,11,18,0.85)';
 });
+
+// ── OTTER.AI TRANSCRIPT VIEWER ───────────────────────────
+(function () {
+  const KEY = 'otterAI';
+
+  function load() {
+    try { return JSON.parse(localStorage.getItem(KEY) || '{}'); } catch { return {}; }
+  }
+
+  function save(data) { localStorage.setItem(KEY, JSON.stringify(data)); }
+
+  function esc(s) {
+    return String(s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  }
+
+  function render() {
+    const tree = document.getElementById('otterTree');
+    if (!tree) return;
+    const data = load();
+    const origins = Object.keys(data);
+    if (!origins.length) {
+      tree.innerHTML = '<span style="color:var(--muted);">📁 otterAI/ — no files yet</span>';
+      return;
+    }
+    let html = '<div style="color:var(--teal); margin-bottom:0.5rem;">📁 otterAI/</div>';
+    origins.forEach(origin => {
+      const dirId = 'od' + Math.abs(origin.split('').reduce((a,c) => (a<<5)-a+c.charCodeAt(0)|0, 0));
+      const files = data[origin] || [];
+      html += `<div class="otter-dir-row" data-dirid="${esc(dirId)}">
+        <span class="otter-dir-chevron" id="${esc(dirId)}-chev">▾</span>
+        <span>📁 ${esc(origin)}/</span>
+        <span style="font-size:0.63rem; color:var(--muted); margin-left:0.3rem;">(${files.length})</span>
+      </div>
+      <div class="otter-dir-files" id="${esc(dirId)}">`;
+      files.forEach(f => {
+        html += `<div class="otter-file-row" data-origin="${esc(origin)}" data-filename="${esc(f.name)}">
+          <span class="otter-file-name">📄 ${esc(f.name)} <span class="otter-file-date">${esc(f.date||'')}</span></span>
+          <button class="otter-delete" data-origin="${esc(origin)}" data-filename="${esc(f.name)}" title="Remove">×</button>
+        </div>`;
+      });
+      html += '</div>';
+    });
+    tree.innerHTML = html;
+  }
+
+  function openFile(origin, name) {
+    const data = load();
+    const f = (data[origin] || []).find(x => x.name === name);
+    if (!f) return;
+    document.querySelectorAll('.otter-file-row').forEach(r =>
+      r.classList.toggle('active', r.dataset.origin === origin && r.dataset.filename === name)
+    );
+    const viewer = document.getElementById('otterViewer');
+    const placeholder = document.getElementById('otterPlaceholder');
+    if (viewer) { viewer.style.display = 'block'; viewer.dataset.origin = origin; viewer.dataset.name = name; }
+    if (placeholder) placeholder.style.display = 'none';
+    const title = document.getElementById('otterViewerTitle');
+    const content = document.getElementById('otterViewerContent');
+    if (title) title.textContent = origin + ' / ' + name;
+    if (content) content.textContent = f.content;
+  }
+
+  function deleteFile(origin, name) {
+    const data = load();
+    if (!data[origin]) return;
+    data[origin] = data[origin].filter(f => f.name !== name);
+    if (!data[origin].length) delete data[origin];
+    save(data);
+    const viewer = document.getElementById('otterViewer');
+    if (viewer && viewer.dataset.origin === origin && viewer.dataset.name === name) {
+      viewer.style.display = 'none';
+      const placeholder = document.getElementById('otterPlaceholder');
+      if (placeholder) placeholder.style.display = 'block';
+    }
+    render();
+  }
+
+  window.otterUpload = function (files) {
+    if (!files || !files.length) return;
+    const origin = prompt('Event / conference name for these recordings:', 'Robotics Summit 2026');
+    if (!origin || !origin.trim()) return;
+    const key = origin.trim();
+    const data = load();
+    if (!data[key]) data[key] = [];
+    let pending = files.length;
+    Array.from(files).forEach(file => {
+      if (!file.name.toLowerCase().endsWith('.txt')) { if (!--pending) { save(data); render(); } return; }
+      const reader = new FileReader();
+      reader.onload = e => {
+        const idx = data[key].findIndex(f => f.name === file.name);
+        const entry = { name: file.name, content: e.target.result, date: new Date().toISOString().slice(0,10) };
+        if (idx >= 0) data[key][idx] = entry; else data[key].push(entry);
+        if (!--pending) { save(data); render(); }
+      };
+      reader.readAsText(file);
+    });
+    const input = document.getElementById('otterFileInput');
+    if (input) input.value = '';
+  };
+
+  function init() {
+    const tree = document.getElementById('otterTree');
+    if (!tree) return;
+    tree.addEventListener('click', function (e) {
+      const del = e.target.closest('.otter-delete');
+      if (del) { deleteFile(del.dataset.origin, del.dataset.filename); return; }
+      const file = e.target.closest('.otter-file-row');
+      if (file) { openFile(file.dataset.origin, file.dataset.filename); return; }
+      const dir = e.target.closest('.otter-dir-row');
+      if (dir) {
+        const id = dir.dataset.dirid;
+        const el = document.getElementById(id);
+        const chev = document.getElementById(id + '-chev');
+        if (el) el.classList.toggle('collapsed');
+        if (chev) chev.classList.toggle('collapsed');
+      }
+    });
+    render();
+  }
+
+  document.readyState === 'loading'
+    ? document.addEventListener('DOMContentLoaded', init)
+    : init();
+})();
+</script>
+<script>
+  function filterMarket(cat, btn) {
+    document.querySelectorAll('.ml-filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('tr[data-mlcat]').forEach(row => {
+      row.classList.toggle('ml-hidden', cat !== 'all' && row.dataset.mlcat !== cat);
+    });
+    document.querySelectorAll('.ml-divider').forEach(div => {
+      const next = div.nextElementSibling;
+      div.classList.toggle('ml-hidden', cat !== 'all' && (!next || next.classList.contains('ml-hidden')));
+    });
+  }
 </script>
 <script>
   window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
