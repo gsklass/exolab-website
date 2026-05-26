@@ -1,0 +1,660 @@
+<!--
+  ExoLab Roadmap + Countdown Component
+  Drop into exolab.llc index.html at the appropriate insertion point.
+  Self-contained: scoped CSS + JS, no external dependencies.
+  Font: assumes site already loads a monospace or tech font; falls back to 'Courier New'.
+  Adapt CSS variable names to match existing site tokens.
+-->
+
+<style>
+  /* ── Scoped tokens (override with site variables if available) ── */
+  .exo-section {
+    --exo-bg:        #0a0e12;
+    --exo-surface:   #111820;
+    --exo-border:    #1e2d3d;
+    --exo-accent:    #00c8a0;
+    --exo-accent2:   #0080ff;
+    --exo-warn:      #f0a500;
+    --exo-text:      #c8d8e8;
+    --exo-muted:     #5a7080;
+    --exo-mono:      'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+    --exo-sans:      'DM Sans', 'Segoe UI', sans-serif;
+    background: var(--exo-bg);
+    color: var(--exo-text);
+    font-family: var(--exo-sans);
+    padding: 0;
+    margin: 0;
+  }
+
+  /* ── Countdown ── */
+  .exo-countdown-wrap {
+    background: var(--exo-surface);
+    border-top: 1px solid var(--exo-border);
+    border-bottom: 1px solid var(--exo-border);
+    padding: 48px 24px 40px;
+    text-align: center;
+  }
+  .exo-countdown-label {
+    font-family: var(--exo-mono);
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--exo-accent);
+    margin-bottom: 20px;
+  }
+  .exo-clock {
+    display: inline-flex;
+    gap: 6px;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .exo-clock-minutes {
+    font-family: var(--exo-mono);
+    font-size: clamp(48px, 10vw, 88px);
+    font-weight: 700;
+    line-height: 1;
+    color: #fff;
+    letter-spacing: -2px;
+    text-shadow: 0 0 40px rgba(0,200,160,0.25);
+  }
+  .exo-clock-unit {
+    font-family: var(--exo-mono);
+    font-size: 12px;
+    color: var(--exo-muted);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    padding-bottom: 12px;
+    padding-left: 4px;
+  }
+  .exo-clock-sub {
+    display: flex;
+    gap: 24px;
+    justify-content: center;
+    margin-top: 16px;
+    flex-wrap: wrap;
+  }
+  .exo-clock-sub-item {
+    text-align: center;
+  }
+  .exo-clock-sub-val {
+    font-family: var(--exo-mono);
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--exo-accent2);
+    display: block;
+    line-height: 1.2;
+  }
+  .exo-clock-sub-label {
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--exo-muted);
+  }
+  .exo-clock-goal {
+    margin-top: 20px;
+    font-size: 13px;
+    color: var(--exo-muted);
+    font-family: var(--exo-mono);
+    letter-spacing: 0.08em;
+  }
+  .exo-clock-goal strong {
+    color: var(--exo-accent);
+  }
+  .exo-done-msg {
+    font-family: var(--exo-mono);
+    font-size: clamp(24px, 5vw, 40px);
+    color: var(--exo-accent);
+    padding: 16px 0;
+  }
+
+  /* ── Section shell ── */
+  .exo-roadmap {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 64px 24px 80px;
+  }
+  .exo-roadmap-header {
+    margin-bottom: 56px;
+  }
+  .exo-roadmap-kicker {
+    font-family: var(--exo-mono);
+    font-size: 11px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--exo-accent);
+    margin-bottom: 12px;
+  }
+  .exo-roadmap-title {
+    font-size: clamp(28px, 5vw, 44px);
+    font-weight: 700;
+    color: #fff;
+    line-height: 1.15;
+    margin: 0 0 16px;
+    letter-spacing: -0.5px;
+  }
+  .exo-roadmap-subtitle {
+    font-size: 16px;
+    color: var(--exo-muted);
+    max-width: 620px;
+    line-height: 1.7;
+  }
+
+  /* ── Track badges ── */
+  .exo-tracks {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 48px;
+  }
+  .exo-track {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    border: 1px solid var(--exo-border);
+    border-radius: 6px;
+    background: var(--exo-surface);
+  }
+  .exo-track-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+  .exo-track-dot.a { background: var(--exo-accent); }
+  .exo-track-dot.b { background: var(--exo-accent2); }
+  .exo-track-name {
+    font-family: var(--exo-mono);
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #fff;
+  }
+  .exo-track-desc {
+    font-size: 13px;
+    color: var(--exo-muted);
+  }
+
+  /* ── Phase cards ── */
+  .exo-phases {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    position: relative;
+  }
+  .exo-phases::before {
+    content: '';
+    position: absolute;
+    left: 28px;
+    top: 40px;
+    bottom: 40px;
+    width: 1px;
+    background: linear-gradient(to bottom, var(--exo-accent), var(--exo-border) 80%);
+    opacity: 0.4;
+  }
+  .exo-phase {
+    display: flex;
+    gap: 24px;
+    padding-bottom: 40px;
+    position: relative;
+  }
+  .exo-phase:last-child {
+    padding-bottom: 0;
+  }
+  .exo-phase-num-wrap {
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 56px;
+    z-index: 1;
+  }
+  .exo-phase-num {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1px solid var(--exo-border);
+    background: var(--exo-surface);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--exo-mono);
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--exo-accent);
+    flex-shrink: 0;
+  }
+  .exo-phase-num.active {
+    border-color: var(--exo-accent);
+    background: rgba(0,200,160,0.08);
+    box-shadow: 0 0 20px rgba(0,200,160,0.15);
+  }
+  .exo-phase-body {
+    flex: 1;
+    padding-top: 8px;
+  }
+  .exo-phase-meta {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+    flex-wrap: wrap;
+  }
+  .exo-phase-name {
+    font-size: 18px;
+    font-weight: 600;
+    color: #fff;
+    letter-spacing: -0.3px;
+  }
+  .exo-phase-window {
+    font-family: var(--exo-mono);
+    font-size: 11px;
+    color: var(--exo-muted);
+    letter-spacing: 0.1em;
+    padding: 2px 8px;
+    border: 1px solid var(--exo-border);
+    border-radius: 4px;
+  }
+  .exo-phase-window.now {
+    border-color: var(--exo-accent);
+    color: var(--exo-accent);
+    background: rgba(0,200,160,0.06);
+  }
+  .exo-phase-obj {
+    font-size: 14px;
+    color: var(--exo-muted);
+    line-height: 1.6;
+    margin-bottom: 16px;
+  }
+  .exo-phase-items {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+  }
+  .exo-phase-items li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 14px;
+    color: var(--exo-text);
+    line-height: 1.5;
+  }
+  .exo-phase-items li::before {
+    content: '—';
+    color: var(--exo-border);
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .exo-phase-tracks {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+  }
+  .exo-badge {
+    font-family: var(--exo-mono);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 3px;
+  }
+  .exo-badge.a {
+    background: rgba(0,200,160,0.1);
+    color: var(--exo-accent);
+    border: 1px solid rgba(0,200,160,0.25);
+  }
+  .exo-badge.b {
+    background: rgba(0,128,255,0.1);
+    color: var(--exo-accent2);
+    border: 1px solid rgba(0,128,255,0.25);
+  }
+  .exo-badge.ab {
+    background: rgba(240,165,0,0.08);
+    color: var(--exo-warn);
+    border: 1px solid rgba(240,165,0,0.2);
+  }
+
+  /* Phase V special */
+  .exo-phase-v-quote {
+    font-size: 15px;
+    font-style: italic;
+    color: #fff;
+    line-height: 1.7;
+    border-left: 2px solid var(--exo-accent);
+    padding-left: 16px;
+    margin-top: 12px;
+  }
+
+  /* Device table */
+  .exo-device-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    margin: 16px 0;
+  }
+  .exo-device-table th {
+    font-family: var(--exo-mono);
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--exo-muted);
+    text-align: left;
+    padding: 6px 12px 6px 0;
+    border-bottom: 1px solid var(--exo-border);
+  }
+  .exo-device-table td {
+    padding: 10px 12px 10px 0;
+    color: var(--exo-text);
+    border-bottom: 1px solid rgba(30,45,61,0.6);
+    vertical-align: top;
+    line-height: 1.5;
+  }
+  .exo-device-table tr:last-child td {
+    border-bottom: none;
+  }
+  .exo-device-name {
+    font-weight: 600;
+    color: #fff;
+    white-space: nowrap;
+  }
+  .exo-highlight-row td {
+    color: var(--exo-accent);
+  }
+  .exo-highlight-row .exo-device-name {
+    color: var(--exo-accent);
+  }
+
+  /* Responsive */
+  @media (max-width: 600px) {
+    .exo-phases::before { left: 21px; }
+    .exo-phase-num-wrap { width: 42px; }
+    .exo-phase-num { width: 36px; height: 36px; font-size: 12px; }
+    .exo-device-table { display: none; }
+    .exo-roadmap { padding: 48px 16px 64px; }
+  }
+</style>
+
+<!-- ════════════════════════════════════════════════
+     COUNTDOWN BLOCK
+     ════════════════════════════════════════════════ -->
+<section class="exo-section" id="exo-mission-clock">
+  <div class="exo-countdown-wrap">
+    <div class="exo-countdown-label">Mission clock — time remaining to walk often</div>
+    <div id="exo-clock-display">
+      <div class="exo-clock">
+        <span class="exo-clock-minutes" id="exo-minutes">——————</span>
+        <span class="exo-clock-unit">min</span>
+      </div>
+      <div class="exo-clock-sub">
+        <div class="exo-clock-sub-item">
+          <span class="exo-clock-sub-val" id="exo-days">—</span>
+          <span class="exo-clock-sub-label">days</span>
+        </div>
+        <div class="exo-clock-sub-item">
+          <span class="exo-clock-sub-val" id="exo-hours">—</span>
+          <span class="exo-clock-sub-label">hours</span>
+        </div>
+        <div class="exo-clock-sub-item">
+          <span class="exo-clock-sub-val" id="exo-secs">—</span>
+          <span class="exo-clock-sub-label">seconds</span>
+        </div>
+      </div>
+    </div>
+    <div class="exo-clock-goal">
+      Target: <strong>December 31, 2027</strong> — walk to the mailbox. Walk on a Tuesday. Dance.
+    </div>
+  </div>
+</section>
+
+<!-- ════════════════════════════════════════════════
+     ROADMAP BLOCK
+     ════════════════════════════════════════════════ -->
+<section class="exo-section" id="exo-roadmap">
+  <div class="exo-roadmap">
+
+    <div class="exo-roadmap-header">
+      <div class="exo-roadmap-kicker">Roadmap · 2026–2027</div>
+      <h2 class="exo-roadmap-title">Five phases to walking often.</h2>
+      <p class="exo-roadmap-subtitle">
+        ExoLab operates on two parallel tracks: getting Greg walking with a commercial exoskeleton by end of 2027, and building Layer 1/2 control intelligence for ataxic gait that doesn't yet exist. These tracks inform each other — the personal test case drives the research.
+      </p>
+    </div>
+
+    <div class="exo-tracks">
+      <div class="exo-track">
+        <div class="exo-track-dot a"></div>
+        <div>
+          <div class="exo-track-name">Track A</div>
+          <div class="exo-track-desc">Personal ambulatory — walk often by 12/31/27</div>
+        </div>
+      </div>
+      <div class="exo-track">
+        <div class="exo-track-dot b"></div>
+        <div>
+          <div class="exo-track-name">Track B</div>
+          <div class="exo-track-desc">ExoLab R&amp;D — Layer 1/2 control for ataxic gait</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="exo-phases">
+
+      <!-- Phase I -->
+      <div class="exo-phase">
+        <div class="exo-phase-num-wrap">
+          <div class="exo-phase-num active">I</div>
+        </div>
+        <div class="exo-phase-body">
+          <div class="exo-phase-meta">
+            <span class="exo-phase-name">Evaluate</span>
+            <span class="exo-phase-window now">In progress · May–Aug 2026</span>
+          </div>
+          <p class="exo-phase-obj">Map the landscape before committing money or direction. Understand what's available, what's missing, and where the biggest contribution gap sits.</p>
+          <ul class="exo-phase-items">
+            <li>Inventory commercial exoskeletons — MMI access, programmability, SCA3 fit</li>
+            <li>Explore funding: Medicare/insurance (currently SCI-only), NIH SBIR/STTR, NSF, DARPA, National Ataxia Foundation</li>
+            <li>Determine whether Layer 1 intent detection is solved for ataxic gait (answer: it is not)</li>
+            <li>Establish community presence — IROS 2026 (Pittsburgh), OpenExo GitHub, NAF network, Shirley Ryan AbilityLab</li>
+            <li>Decide role: developer, investor, or hybrid (leaning: hybrid, primary developer)</li>
+          </ul>
+
+          <table class="exo-device-table">
+            <thead>
+              <tr>
+                <th>Device</th>
+                <th>Maker</th>
+                <th>Intent Interface</th>
+                <th>SCA3 Fit</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="exo-device-name">ReWalk 7</span></td>
+                <td>Lifeward</td>
+                <td>Wrist control + tilt sensor; cloud-connected; stairs/curbs</td>
+                <td>Requires reliable lean mechanics</td>
+              </tr>
+              <tr>
+                <td><span class="exo-device-name">Indego Personal</span></td>
+                <td>Ekso Bionics</td>
+                <td>Center-of-pressure at hip; modular; no stairs</td>
+                <td>Moderate — passive initiation helps</td>
+              </tr>
+              <tr class="exo-highlight-row">
+                <td><span class="exo-device-name">HAL</span></td>
+                <td>Cyberdyne</td>
+                <td>Surface EMG — reads bioelectric intent signals from skin</td>
+                <td>Best theoretical fit for ataxic gait</td>
+              </tr>
+              <tr class="exo-highlight-row">
+                <td><span class="exo-device-name">OpenExo</span></td>
+                <td>NAU / U Mich (OSS)</td>
+                <td>Fully programmable (Teensy 4.1 + Arduino Nano 33 BLE)</td>
+                <td>R&amp;D platform — Layer 1/2 dev target</td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="exo-phase-tracks">
+            <span class="exo-badge ab">A + B</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Phase II -->
+      <div class="exo-phase">
+        <div class="exo-phase-num-wrap">
+          <div class="exo-phase-num">II</div>
+        </div>
+        <div class="exo-phase-body">
+          <div class="exo-phase-meta">
+            <span class="exo-phase-name">Answer &amp; Plan</span>
+            <span class="exo-phase-window">Aug–Dec 2026</span>
+          </div>
+          <p class="exo-phase-obj">Convert Phase I questions into decisions. Secure clinical access. Define the R&amp;D scope. Build the funded plan.</p>
+          <ul class="exo-phase-items">
+            <li>Clinical evaluation at certified exoskeleton center (Sheltering Arms, Richmond VA or JHU affiliate) — establishes candidacy and research protocol access</li>
+            <li>Device access strategy: clinical research protocol (preferred) vs. personal purchase (~$100–200K)</li>
+            <li>Grant proposal(s) submitted — SCA3 + ataxic gait control is an underserved intersection</li>
+            <li>ExoLab Layer 1/2 scope defined: gait parameters to instrument, control architecture to prototype</li>
+            <li>Development environment live: OpenExo fork, Teensy board, Azure Kinect for gait capture</li>
+          </ul>
+          <p style="font-size:13px; color: var(--exo-muted); margin-top: 8px;">
+            <em>Note: Current FDA approvals cover SCI, not cerebellar ataxia. Positioning this as research — not just personal use — is the fastest path to device access while generating publishable data.</em>
+          </p>
+          <div class="exo-phase-tracks">
+            <span class="exo-badge ab">A + B</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Phase III -->
+      <div class="exo-phase">
+        <div class="exo-phase-num-wrap">
+          <div class="exo-phase-num">III</div>
+        </div>
+        <div class="exo-phase-body">
+          <div class="exo-phase-meta">
+            <span class="exo-phase-name">Implementation</span>
+            <span class="exo-phase-window">Q1–Q2 2027</span>
+          </div>
+          <p class="exo-phase-obj">Acquire the device. Begin instrumented walking. Get the control prototype running.</p>
+          <ul class="exo-phase-items">
+            <li>Exoskeleton acquired; certified companion trained; first assisted walk completed</li>
+            <li>Home environment on Canby Road adapted for device use</li>
+            <li>OpenExo dev environment operational in Crostini/Linux</li>
+            <li>Initial gait capture sessions using sensor suite; SCA3 dataset begun</li>
+            <li>Layer 1/2 control prototype running in simulation</li>
+          </ul>
+          <div class="exo-phase-tracks">
+            <span class="exo-badge a">Track A</span>
+            <span class="exo-badge b">Track B</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Phase IV -->
+      <div class="exo-phase">
+        <div class="exo-phase-num-wrap">
+          <div class="exo-phase-num">IV</div>
+        </div>
+        <div class="exo-phase-body">
+          <div class="exo-phase-meta">
+            <span class="exo-phase-name">Iteration</span>
+            <span class="exo-phase-window">Q2–Q4 2027</span>
+          </div>
+          <p class="exo-phase-obj">The engineering loop. Walk more. Walk better. Build smarter.</p>
+          <ul class="exo-phase-items">
+            <li>Instrument → Walk → Capture data → Refine control parameters → Repeat</li>
+            <li>Increasing frequency of walking sessions; improving gait quality; reducing fall risk</li>
+            <li>First findings published — even informally via OpenExo community</li>
+            <li>Layer 1/2 prototype tested on actual device; clinical collaborators engaged</li>
+          </ul>
+          <div class="exo-phase-tracks">
+            <span class="exo-badge a">Track A</span>
+            <span class="exo-badge b">Track B</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Phase V -->
+      <div class="exo-phase">
+        <div class="exo-phase-num-wrap">
+          <div class="exo-phase-num">V</div>
+        </div>
+        <div class="exo-phase-body">
+          <div class="exo-phase-meta">
+            <span class="exo-phase-name">Practice, Walk &amp; Dance</span>
+            <span class="exo-phase-window">Dec 2027 →</span>
+          </div>
+          <p class="exo-phase-obj">Walking is routine. The R&amp;D has produced something shareable. The mission clock hits zero.</p>
+          <blockquote class="exo-phase-v-quote">
+            The goal isn't to walk once. It's to walk to the mailbox. Walk at a friend's gathering. Dance at a grandkid's birthday. Walk because it's Tuesday.
+          </blockquote>
+          <ul class="exo-phase-items" style="margin-top:16px;">
+            <li>Walking is a regular part of life — not a clinical event</li>
+            <li>ExoLab has a publishable control system contribution in the SCA3/exoskeleton intersection</li>
+            <li>Track B: open-source contribution to OpenExo; established position in the field</li>
+          </ul>
+          <div class="exo-phase-tracks">
+            <span class="exo-badge ab">A + B</span>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /exo-phases -->
+  </div><!-- /exo-roadmap -->
+</section>
+
+<!-- ════════════════════════════════════════════════
+     COUNTDOWN JAVASCRIPT
+     ════════════════════════════════════════════════ -->
+<script>
+(function() {
+  var target = new Date('2027-12-31T23:59:59');
+
+  function pad(n, w) {
+    return String(n).padStart(w || 2, '0');
+  }
+
+  function fmt(n) {
+    // Add commas to large numbers
+    return n.toLocaleString();
+  }
+
+  function tick() {
+    var now = new Date();
+    var diff = target - now;
+
+    if (diff <= 0) {
+      document.getElementById('exo-clock-display').innerHTML =
+        '<div class="exo-done-msg">We\'re walking. 🦾</div>';
+      return;
+    }
+
+    var totalSecs  = Math.floor(diff / 1000);
+    var totalMins  = Math.floor(diff / 60000);
+    var days       = Math.floor(diff / 86400000);
+    var hours      = Math.floor((diff % 86400000) / 3600000);
+    var mins       = Math.floor((diff % 3600000)  / 60000);
+    var secs       = Math.floor((diff % 60000)    / 1000);
+
+    var mEl = document.getElementById('exo-minutes');
+    var dEl = document.getElementById('exo-days');
+    var hEl = document.getElementById('exo-hours');
+    var sEl = document.getElementById('exo-secs');
+
+    if (mEl) mEl.textContent = fmt(totalMins);
+    if (dEl) dEl.textContent = pad(days, 3);
+    if (hEl) hEl.textContent = pad(hours);
+    if (sEl) sEl.textContent = pad(secs);
+  }
+
+  tick();
+  setInterval(tick, 1000);
+})();
+</script>

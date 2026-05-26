@@ -17,6 +17,21 @@ The site covers:
 - Resources: key papers, open-source repos, and industry trackers
 - Contact / collaboration form
 
+## Deployment
+
+Only one file goes to the web server:
+
+| File | Action |
+|---|---|
+| `index.html` | **Upload to `public_html/`** — the entire site |
+| `exoskeleton_comparison.html` | Upload only if you want it linked |
+| `market-landscape.html` | Upload only if you want it linked |
+| `EXOLAB_HANDOFF.md` | Planning doc — keep local |
+| `exolab_roadmap_section.html` | Component source — keep local |
+| `README.md`, `CLAUDE.md` | Dev docs — keep local |
+
+On Namecheap: cPanel → File Manager → `public_html/` → upload `index.html`.
+
 ## Tech
 
 Single-file static site (`index.html`). No framework, no build step, no dependencies.
