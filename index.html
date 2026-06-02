@@ -839,9 +839,6 @@ footer {
   <a href="#hero" class="nav-logo">EXO<span>LAB</span>.LLC</a>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
-    <li><a href="#gallery">Gallery</a></li>
-    <li><a href="#labdoc">Lab Plan</a></li>
-    <li><a href="#skills">DSP Skills</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#resources">Resources</a></li>
     <li><a href="#otterAI">Transcripts</a></li>
@@ -863,7 +860,7 @@ footer {
       <em>Real hardware. Real code. Real stakes.</em>
     </p>
     <div class="cta-group">
-      <a href="#labdoc" class="btn-primary">View Lab Plan</a>
+      <a href="#roadmap" class="btn-primary">View Roadmap</a>
       <a href="#contact" class="btn-secondary">Collaborate</a>
     </div>
   </div>
@@ -887,26 +884,6 @@ footer {
   </div>
 </section>
 
-<!-- ── STAT BAR ──────────────────────────────────────────── -->
-<div class="stat-bar">
-  <div class="stat">
-    <span class="stat-num" data-count="30">0</span>
-    <span class="stat-label">Years DSP Experience</span>
-  </div>
-  <div class="stat">
-    <span class="stat-num" data-count="5">0</span>
-    <span class="stat-label">Build Phases Planned</span>
-  </div>
-  <div class="stat">
-    <span class="stat-num" data-prefix="~$">0</span>
-    <span class="stat-label">Phase 1–3 Budget (K)</span>
-    <script>document.currentScript.previousElementSibling.setAttribute('data-count','1.5')</script>
-  </div>
-  <div class="stat">
-    <span class="stat-num" data-count="9" data-suffix="Nm">0</span>
-    <span class="stat-label">Target Joint Torque</span>
-  </div>
-</div>
 
 <!-- ── ABOUT ─────────────────────────────────────────────── -->
 <section id="about">
@@ -931,302 +908,11 @@ footer {
           <strong>Current status:</strong> Phase 1 hardware on order. CubeMars AK80-9 actuators inbound. Software stack under development.
         </p>
       </div>
-      <div class="reveal">
-        <div class="dsp-card">
-          <div class="dsp-card-title">// DSP → Exo Control Mapping</div>
-          <div class="skill-map">
-            <div class="skill-row">
-              <span class="skill-name">PID Loop Tuning</span>
-              <div class="skill-bar"><div class="skill-fill" style="--w:96%"></div></div>
-            </div>
-            <div class="skill-row">
-              <span class="skill-name">Real-Time Filtering</span>
-              <div class="skill-bar"><div class="skill-fill" style="--w:98%"></div></div>
-            </div>
-            <div class="skill-row">
-              <span class="skill-name">State Machine Design</span>
-              <div class="skill-bar"><div class="skill-fill" style="--w:95%"></div></div>
-            </div>
-            <div class="skill-row">
-              <span class="skill-name">Embedded C / STM32</span>
-              <div class="skill-bar"><div class="skill-fill" style="--w:90%"></div></div>
-            </div>
-            <div class="skill-row">
-              <span class="skill-name">System Identification</span>
-              <div class="skill-bar"><div class="skill-fill" style="--w:92%"></div></div>
-            </div>
-            <div class="skill-row">
-              <span class="skill-name">Sensor Fusion / IMU</span>
-              <div class="skill-bar"><div class="skill-fill" style="--w:85%"></div></div>
-            </div>
-            <div class="skill-row">
-              <span class="skill-name">CAN Bus Protocol</span>
-              <div class="skill-bar"><div class="skill-fill" style="--w:80%"></div></div>
-            </div>
-            <div class="skill-row">
-              <span class="skill-name">Impedance Control</span>
-              <div class="skill-bar"><div class="skill-fill" style="--w:75%"></div></div>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
   </div>
 </section>
 
-<!-- ── GALLERY ───────────────────────────────────────────── -->
-<section id="gallery">
-  <div class="section-inner">
-    <p class="section-label">The Vision</p>
-    <h2>Walking Again — <em>By Engineering</em></h2>
-    <p class="section-intro">What ExoLab is working toward: powered joint assistance for a person with SCA3-affected gait. These images represent the target, not the current state. Phase 4 is the goal.</p>
-    <div class="gallery-grid reveal">
 
-      <div class="gallery-item">
-        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&q=80"
-             alt="Person walking with powered lower body exoskeleton mobility device outdoors"
-             onerror="this.classList.add('placeholder-mode');">
-        <div class="gallery-label">↗ Target: Outdoor gait on W&amp;OD Trail · ExoLab Phase 4</div>
-      </div>
-
-      <div class="gallery-item" style="display:flex; flex-direction:column; align-items:center; justify-content:center; background:var(--bg3); border: 1px dashed rgba(0,229,200,0.2);">
-        <div style="font-size:2rem; opacity:0.25; margin-bottom:0.5rem;">📷</div>
-        <div style="font-family:var(--font-mono); font-size:0.65rem; color:var(--muted); text-align:center; letter-spacing:0.08em; line-height:1.6; padding:0 1rem;">
-          YOUR PHOTO HERE<br>Upload to replace placeholder
-        </div>
-      </div>
-
-      <div class="gallery-item" style="display:flex; flex-direction:column; align-items:center; justify-content:center; background:var(--bg3); border: 1px dashed rgba(0,229,200,0.2);">
-        <div style="font-size:2rem; opacity:0.25; margin-bottom:0.5rem;">📷</div>
-        <div style="font-family:var(--font-mono); font-size:0.65rem; color:var(--muted); text-align:center; letter-spacing:0.08em; line-height:1.6; padding:0 1rem;">
-          YOUR PHOTO HERE<br>Upload to replace placeholder
-        </div>
-      </div>
-
-      <div class="gallery-item">
-        <img src="https://images.unsplash.com/photo-1576086213369-97a306d36557?w=500&q=80"
-             alt="Clinical exoskeleton gait training rehabilitation therapy walking"
-             onerror="this.classList.add('placeholder-mode');">
-        <div class="gallery-label">↗ Clinical reference · Atalante X gait training</div>
-      </div>
-
-      <div class="gallery-item" style="display:flex; flex-direction:column; align-items:center; justify-content:center; background:var(--bg3); border: 1px dashed rgba(0,229,200,0.2);">
-        <div style="font-size:2rem; opacity:0.25; margin-bottom:0.5rem;">📷</div>
-        <div style="font-family:var(--font-mono); font-size:0.65rem; color:var(--muted); text-align:center; letter-spacing:0.08em; line-height:1.6; padding:0 1rem;">
-          YOUR PHOTO HERE<br>Upload to replace placeholder
-        </div>
-      </div>
-
-    </div>
-    <p style="font-family:var(--font-mono); font-size:0.68rem; color:var(--muted); margin-top:1rem; letter-spacing:0.08em;">
-      // Placeholder images shown. Replace with actual ExoLab photos when available. Two slots reserved for your personal images.
-    </p>
-  </div>
-</section>
-
-<!-- ── LAB DOCUMENT ──────────────────────────────────────── -->
-<section id="labdoc">
-  <div class="section-inner">
-    <p class="section-label">Track B · R&amp;D Build Plan</p>
-    <h2>The <em>ExoLab</em> Build Plan</h2>
-    <p class="section-intro">The engineering detail behind Track B — five hardware phases from benchtop motor control to a wearable bilateral exoskeleton assist system. This is how the Layer 1/2 control intelligence gets built and tested. See the <a href="#roadmap" style="color:var(--teal);text-decoration:none;">Mission Roadmap ↓</a> for the full two-track strategic plan.</p>
-
-    <div class="phase-grid reveal">
-      <div class="phase-card active" onclick="showPhase(0)">
-        <div class="phase-num">PHASE 01</div>
-        <div class="phase-title">Benchtop Motor Control</div>
-        <div class="phase-cost">~$800</div>
-      </div>
-      <div class="phase-card" onclick="showPhase(1)">
-        <div class="phase-num">PHASE 02</div>
-        <div class="phase-title">Gait Sensor Platform</div>
-        <div class="phase-cost">~$225</div>
-      </div>
-      <div class="phase-card" onclick="showPhase(2)">
-        <div class="phase-num">PHASE 03</div>
-        <div class="phase-title">Simulated Knee Joint</div>
-        <div class="phase-cost">~$220</div>
-      </div>
-      <div class="phase-card" onclick="showPhase(3)">
-        <div class="phase-num">PHASE 04</div>
-        <div class="phase-title">Wearable Single-Joint</div>
-        <div class="phase-cost">~$2,900</div>
-      </div>
-      <div class="phase-card" onclick="showPhase(4)">
-        <div class="phase-num">PHASE 05</div>
-        <div class="phase-title">Bilateral Hip + Knee</div>
-        <div class="phase-cost">~$15,000+</div>
-      </div>
-    </div>
-
-    <!-- Phase Details -->
-    <div id="pd0" class="phase-detail active">
-      <h3>PHASE 01 — Benchtop Motor Control</h3>
-      <p>One motor. One controller. Your own PID loop. The CubeMars AK80-9 delivers 9Nm rated / 22Nm peak torque through an integrated brushless motor, planetary gearbox, encoder, and CAN driver — all in a single package. The MIT Mini Cheetah protocol runs over CAN bus. <strong>Objective: command torque, read position, tune a real impedance controller.</strong></p>
-      <table class="parts-table">
-        <tr><th>Component</th><th>Part</th><th>Cost</th><th>Notes</th></tr>
-        <tr><td>Actuator</td><td>CubeMars AK80-9 V3.0</td><td class="cost">~$500</td><td>48V, MIT CAN protocol, integrated encoder</td></tr>
-        <tr><td>CAN Interface</td><td>Waveshare USB-CAN-A</td><td class="cost">~$22</td><td>socketCAN on Linux, plug-and-play</td></tr>
-        <tr><td>Power Supply</td><td>MEAN WELL 48V 10A</td><td class="cost">~$90</td><td>Bench PSU — current-limited for safety</td></tr>
-        <tr><td>E-Stop</td><td>22mm latching mushroom switch</td><td class="cost">~$12</td><td>Non-negotiable. Within arm's reach always.</td></tr>
-        <tr><td>Frame</td><td>2020 Aluminum Extrusion</td><td class="cost">~$50</td><td>Rigid mount — 9Nm will move a light table</td></tr>
-        <tr><td>Controller</td><td>Raspberry Pi 5 or STM32G4</td><td class="cost">~$60</td><td>Python CAN stack or embedded C</td></tr>
-      </table>
-    </div>
-
-    <div id="pd1" class="phase-detail">
-      <h3>PHASE 02 — Gait Sensor Platform</h3>
-      <p>Pure sensing. No actuation. Strap IMUs and force-sensitive resistors to both legs and walk — on carpet, on gravel, on the six-acre property. Capture what SCA3 gait actually looks like at 500Hz. <strong>This data becomes the training signal for every control algorithm written in Phases 3–5.</strong></p>
-      <table class="parts-table">
-        <tr><th>Component</th><th>Part</th><th>Cost</th><th>Notes</th></tr>
-        <tr><td>IMU (×3)</td><td>ICM-42688-P breakout board</td><td class="cost">~$30 ea</td><td>32kHz sampling, significant upgrade from MPU-6050</td></tr>
-        <tr><td>Force Sensors</td><td>Interlink 402 FSR (×8)</td><td class="cost">~$6 ea</td><td>Heel, 1st/5th met head, big toe per foot</td></tr>
-        <tr><td>ADC</td><td>ADS1115 16-bit, I2C</td><td class="cost">~$13</td><td>4-channel analog read for FSRs</td></tr>
-        <tr><td>MCU</td><td>Teensy 4.1 (600MHz ARM M7)</td><td class="cost">~$30</td><td>Real-time capable; DSP-friendly architecture</td></tr>
-        <tr><td>Storage</td><td>MicroSD module + 8GB card</td><td class="cost">~$8</td><td>Log raw data at 500Hz for offline analysis</td></tr>
-        <tr><td>Battery</td><td>LiPo 3.7V 2000mAh + TP4056</td><td class="cost">~$15</td><td>Wearable power for walking trials</td></tr>
-      </table>
-    </div>
-
-    <div id="pd2" class="phase-detail">
-      <h3>PHASE 03 — Simulated Knee Joint</h3>
-      <p>Connect the motor to a 1:1 mechanical replica of a human knee. Drive it with gait data captured in Phase 2. When this mechanical leg tracks a walking cycle correctly — under impedance control — you are ready for Phase 4. <strong>Control loop latency target: under 5ms end-to-end.</strong></p>
-      <table class="parts-table">
-        <tr><th>Component</th><th>Part</th><th>Cost</th><th>Notes</th></tr>
-        <tr><td>Frame</td><td>80/20 1" aluminum extrusion</td><td class="cost">~$100</td><td>Vertical leg mock-up with pivot joint</td></tr>
-        <tr><td>Knee Pivot</td><td>Flanged pillow block bearing 12mm</td><td class="cost">~$25</td><td>Zero-backlash coupling to motor shaft</td></tr>
-        <tr><td>Load Cell</td><td>50kg S-type + HX711 amp</td><td class="cost">~$22</td><td>Measure actual torque output, validate commands</td></tr>
-        <tr><td>Current Monitor</td><td>INA226 I2C power monitor</td><td class="cost">~$10</td><td>Real-time power consumption → battery sizing</td></tr>
-        <tr><td>Leg Segments</td><td>Aluminum flat bar 1"×1/4"</td><td class="cost">~$20</td><td>Thigh + shank fabricated from hardware store stock</td></tr>
-      </table>
-    </div>
-
-    <div id="pd3" class="phase-detail">
-      <h3>PHASE 04 — Wearable Single-Joint Assist</h3>
-      <p>The first device that goes on a body. A powered knee orthosis using the AK80-9 to provide assistive torque — not walking for you, but assisting where your own muscles are already trying. <strong>Safety gate: Phases 1–3 must be complete with 4+ weeks of stable operation before this phase begins.</strong> Katia present for all wearable sessions. Dr. Rosenthal signed off.</p>
-      <table class="parts-table">
-        <tr><th>Component</th><th>Part</th><th>Cost</th><th>Notes</th></tr>
-        <tr><td>Second Actuator</td><td>CubeMars AK80-9 (left leg)</td><td class="cost">~$500</td><td>Bilateral is safer than unilateral for ataxia</td></tr>
-        <tr><td>Battery</td><td>48V 20Ah wearable LiPo pack</td><td class="cost">~$250</td><td>Sized for 2hr walking sessions</td></tr>
-        <tr><td>Brace Frame</td><td>KAFO modified or custom carbon</td><td class="cost">~$1,000</td><td>Structural foundation for the actuator mount</td></tr>
-        <tr><td>RF E-Stop</td><td>Wireless kill switch handheld</td><td class="cost">~$75</td><td>In-hand at all times during walking trials</td></tr>
-        <tr><td>Safety Harness</td><td>Chest harness + overhead tether</td><td class="cost">~$100</td><td>Mandatory for first 20+ wearable sessions</td></tr>
-      </table>
-    </div>
-
-    <div id="pd4" class="phase-detail">
-      <h3>PHASE 05 — Bilateral Hip + Knee System</h3>
-      <p>The full system: hip and knee actuation, left and right, with a unified control stack running gait phase detection from dual IMU/FSR sensor arrays. Four AK80-9 actuators. A full power electronics bay. This is what academic labs build with grad student teams. ExoLab will build it solo — which means it will take longer, and every decision will be deeply understood. <strong>Estimated timeline: 6–18 months beyond Phase 4.</strong></p>
-      <table class="parts-table">
-        <tr><th>Component</th><th>Est. Cost</th><th>Notes</th></tr>
-        <tr><td>2× Additional AK80-9 (hips)</td><td class="cost">~$1,000</td><td>Higher torque variant for hip flexion/extension</td></tr>
-        <tr><td>Power Electronics Bay</td><td class="cost">~$400</td><td>48V BMS, current distribution, emergency cutoff</td></tr>
-        <tr><td>Bilateral Frame</td><td class="cost">~$2,000</td><td>Carbon fiber + aluminum hybrid structural frame</td></tr>
-        <tr><td>Central Controller</td><td class="cost">~$200</td><td>Jetson Nano or Teensy 4.1 — real-time gait FSM</td></tr>
-        <tr><td>Full Sensor Array</td><td class="cost">~$300</td><td>6× IMU, 16× FSR, full bilateral coverage</td></tr>
-        <tr><td>Misc / Integration</td><td class="cost">~$1,000</td><td>3D printing, machining, wiring, iteration</td></tr>
-      </table>
-    </div>
-
-    <div style="margin-top:2rem; padding:1.5rem; border:1px solid rgba(240,165,0,0.2); background:rgba(240,165,0,0.04);">
-      <p style="font-family:var(--font-mono); font-size:0.75rem; color:var(--amber); letter-spacing:0.08em; line-height:1.8;">
-        ⚡ DOWNLOAD FULL LAB PLAN — The complete ExoLab Build Plan document including detailed parts lists, control theory background, DSP mapping tables, workshop setup guide, and safety protocols is available as a Word document. <a href="#contact" style="color:var(--teal); text-decoration:none;">Contact to request →</a>
-      </p>
-    </div>
-  </div>
-</section>
-
-<!-- ── DSP SKILLS ────────────────────────────────────────── -->
-<section id="skills">
-  <div class="section-inner">
-    <p class="section-label">Technical Background</p>
-    <h2>30 Years of DSP → <em>Exoskeleton Control</em></h2>
-    <p class="section-intro">The translation from digital signal processing to exoskeleton control is nearly one-to-one. Every skill developed over a 30-year engineering career maps directly to the core challenges of robotic mobility.</p>
-
-    <div class="mapping-grid reveal">
-      <div class="mapping-row">
-        <div class="mapping-left">
-          <div class="mapping-label">DSP Background</div>
-          <div class="mapping-value">Real-time filter design</div>
-        </div>
-        <div class="mapping-right">
-          <div class="mapping-label">ExoLab Application</div>
-          <div class="mapping-value">Kalman / Madgwick filter on IMU data for gait phase detection</div>
-        </div>
-      </div>
-      <div class="mapping-row">
-        <div class="mapping-left">
-          <div class="mapping-label">DSP Background</div>
-          <div class="mapping-value">PID loop tuning</div>
-        </div>
-        <div class="mapping-right">
-          <div class="mapping-label">ExoLab Application</div>
-          <div class="mapping-value">Torque / impedance control on the AK80-9 actuator — same math, mechanical plant</div>
-        </div>
-      </div>
-      <div class="mapping-row">
-        <div class="mapping-left">
-          <div class="mapping-label">DSP Background</div>
-          <div class="mapping-value">Noise floor & SNR analysis</div>
-        </div>
-        <div class="mapping-right">
-          <div class="mapping-label">ExoLab Application</div>
-          <div class="mapping-value">Heel-strike detection from force sensors buried in noisy floor contact signal</div>
-        </div>
-      </div>
-      <div class="mapping-row">
-        <div class="mapping-left">
-          <div class="mapping-label">DSP Background</div>
-          <div class="mapping-value">Fixed-point arithmetic & embedded C</div>
-        </div>
-        <div class="mapping-right">
-          <div class="mapping-label">ExoLab Application</div>
-          <div class="mapping-value">Real-time control loop on STM32G4 — sub-5ms latency target</div>
-        </div>
-      </div>
-      <div class="mapping-row">
-        <div class="mapping-left">
-          <div class="mapping-label">DSP Background</div>
-          <div class="mapping-value">State machine design</div>
-        </div>
-        <div class="mapping-right">
-          <div class="mapping-label">ExoLab Application</div>
-          <div class="mapping-value">Gait cycle FSM: heel-strike → loading → midstance → toe-off → swing</div>
-        </div>
-      </div>
-      <div class="mapping-row">
-        <div class="mapping-left">
-          <div class="mapping-label">DSP Background</div>
-          <div class="mapping-value">System identification</div>
-        </div>
-        <div class="mapping-right">
-          <div class="mapping-label">ExoLab Application</div>
-          <div class="mapping-value">Characterizing the mechanical plant: joint stiffness, inertia, damping coefficients</div>
-        </div>
-      </div>
-      <div class="mapping-row">
-        <div class="mapping-left">
-          <div class="mapping-label">DSP Background</div>
-          <div class="mapping-value">Fourier analysis & spectral methods</div>
-        </div>
-        <div class="mapping-right">
-          <div class="mapping-label">ExoLab Application</div>
-          <div class="mapping-value">SCA3 gait variability analysis — trunk sway frequency spectrum quantification</div>
-        </div>
-      </div>
-      <div class="mapping-row">
-        <div class="mapping-left">
-          <div class="mapping-label">DSP Background</div>
-          <div class="mapping-value">CEO / product leadership</div>
-        </div>
-        <div class="mapping-right">
-          <div class="mapping-label">ExoLab Application</div>
-          <div class="mapping-value">Investment analysis of exoskeleton companies (Lifeward/LFWD, Wandercraft, Ekso)</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- ── ROADMAP + MISSION CLOCK ────────────────────────────── -->
 <style>
@@ -1357,28 +1043,6 @@ footer {
     line-height: 1.7;
   }
 
-  /* ── Track badges ── */
-  .exo-tracks { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 48px; }
-  .exo-track {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    padding: 10px 16px;
-    border: 1px solid var(--exo-border);
-    border-radius: 6px;
-    background: var(--exo-surface);
-  }
-  .exo-track-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
-  .exo-track-dot.a { background: var(--exo-accent); }
-  .exo-track-dot.b { background: var(--exo-accent2); }
-  .exo-track-name {
-    font-family: var(--exo-mono);
-    font-size: 11px;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: #fff;
-  }
-  .exo-track-desc { font-size: 13px; color: var(--exo-muted); }
 
   /* ── Phase cards ── */
   .exo-phases { display: flex; flex-direction: column; gap: 0; position: relative; }
@@ -1457,18 +1121,6 @@ footer {
     line-height: 1.5;
   }
   .exo-phase-items li::before { content: '—'; color: var(--exo-border); flex-shrink: 0; margin-top: 1px; }
-  .exo-phase-tracks { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px; }
-  .exo-badge {
-    font-family: var(--exo-mono);
-    font-size: 10px;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-    padding: 3px 8px;
-    border-radius: 3px;
-  }
-  .exo-badge.a { background: rgba(0,229,200,0.1); color: var(--exo-accent); border: 1px solid rgba(0,229,200,0.25); }
-  .exo-badge.b { background: rgba(0,128,255,0.1); color: var(--exo-accent2); border: 1px solid rgba(0,128,255,0.25); }
-  .exo-badge.ab { background: rgba(240,165,0,0.08); color: var(--exo-warn); border: 1px solid rgba(240,165,0,0.2); }
 
   .exo-phase-v-quote {
     font-size: 15px;
@@ -1551,25 +1203,8 @@ footer {
       <div class="exo-roadmap-kicker">Roadmap · 2026–2027</div>
       <h2 class="exo-roadmap-title">Five phases to walking often.</h2>
       <p class="exo-roadmap-subtitle">
-        ExoLab operates on two parallel tracks: getting Greg walking with a commercial exoskeleton by end of 2027, and building Layer 1/2 control intelligence for ataxic gait that doesn't yet exist. These tracks inform each other — the personal test case drives the research. The <a href="#labdoc" style="color:var(--exo-accent);text-decoration:none;">Build Plan section ↑</a> details the Track B engineering phases.
+        Getting Greg walking with a commercial exoskeleton by end of 2027, while building Layer 1/2 control intelligence for ataxic gait that doesn't yet exist. The personal test case drives the research.
       </p>
-    </div>
-
-    <div class="exo-tracks">
-      <div class="exo-track">
-        <div class="exo-track-dot a"></div>
-        <div>
-          <div class="exo-track-name">Track A</div>
-          <div class="exo-track-desc">Personal ambulatory — walk often by 12/31/27</div>
-        </div>
-      </div>
-      <div class="exo-track">
-        <div class="exo-track-dot b"></div>
-        <div>
-          <div class="exo-track-name">Track B</div>
-          <div class="exo-track-desc">ExoLab R&amp;D — Layer 1/2 control for ataxic gait · <a href="#labdoc" style="color:var(--exo-accent);text-decoration:none;font-size:11px;">See Build Plan ↑</a></div>
-        </div>
-      </div>
     </div>
 
     <div class="exo-phases">
@@ -1615,6 +1250,18 @@ footer {
                 <td>Moderate — passive initiation helps</td>
               </tr>
               <tr class="exo-highlight-row">
+                <td><span class="exo-device-name">Atalante X</span></td>
+                <td>Wandercraft</td>
+                <td>Fully autonomous balance — hands-free, no crutches; AI-driven gait generation</td>
+                <td>Strong candidate — removes crutch dependency, critical for ataxia</td>
+              </tr>
+              <tr class="exo-highlight-row">
+                <td><span class="exo-device-name">Eve</span></td>
+                <td>Wandercraft</td>
+                <td>Self-balancing personal exo — NVIDIA Jetson AI, no crutches, 5-session onboarding; home &amp; community use</td>
+                <td>Highest relevance — personal/home device targeting neurological gait, ~2026 FDA filing</td>
+              </tr>
+              <tr class="exo-highlight-row">
                 <td><span class="exo-device-name">HAL</span></td>
                 <td>Cyberdyne</td>
                 <td>Surface EMG — reads bioelectric intent signals from skin</td>
@@ -1628,7 +1275,6 @@ footer {
               </tr>
             </tbody>
           </table>
-          <div class="exo-phase-tracks"><span class="exo-badge ab">A + B</span></div>
         </div>
       </div>
 
@@ -1653,7 +1299,6 @@ footer {
           <p style="font-size:13px; color: var(--exo-muted); margin-top: 8px;">
             <em>Note: Current FDA approvals cover SCI, not cerebellar ataxia. Positioning this as research — not just personal use — is the fastest path to device access while generating publishable data.</em>
           </p>
-          <div class="exo-phase-tracks"><span class="exo-badge ab">A + B</span></div>
         </div>
       </div>
 
@@ -1667,7 +1312,7 @@ footer {
             <span class="exo-phase-name">Implementation</span>
             <span class="exo-phase-window">Q1–Q2 2027</span>
           </div>
-          <p class="exo-phase-obj">Acquire the device. Begin instrumented walking. Get the control prototype running. Track B work here runs parallel to <a href="#labdoc" style="color:var(--exo-accent);text-decoration:none;">Build Plan Phases 02–03 ↑</a>.</p>
+          <p class="exo-phase-obj">Acquire the device. Begin instrumented walking. Get the control prototype running.</p>
           <ul class="exo-phase-items">
             <li>Exoskeleton acquired; certified companion trained; first assisted walk completed</li>
             <li>Home environment on Canby Road adapted for device use</li>
@@ -1675,10 +1320,6 @@ footer {
             <li>Initial gait capture sessions using sensor suite; SCA3 dataset begun</li>
             <li>Layer 1/2 control prototype running in simulation</li>
           </ul>
-          <div class="exo-phase-tracks">
-            <span class="exo-badge a">Track A</span>
-            <span class="exo-badge b">Track B</span>
-          </div>
         </div>
       </div>
 
@@ -1699,10 +1340,6 @@ footer {
             <li>First findings published — even informally via OpenExo community</li>
             <li>Layer 1/2 prototype tested on actual device; clinical collaborators engaged</li>
           </ul>
-          <div class="exo-phase-tracks">
-            <span class="exo-badge a">Track A</span>
-            <span class="exo-badge b">Track B</span>
-          </div>
         </div>
       </div>
 
@@ -1723,9 +1360,8 @@ footer {
           <ul class="exo-phase-items" style="margin-top:16px;">
             <li>Walking is a regular part of life — not a clinical event</li>
             <li>ExoLab has a publishable control system contribution in the SCA3/exoskeleton intersection</li>
-            <li>Track B: open-source contribution to OpenExo; established position in the field</li>
+            <li>Open-source contribution to OpenExo; established position in the field</li>
           </ul>
-          <div class="exo-phase-tracks"><span class="exo-badge ab">A + B</span></div>
         </div>
       </div>
 
@@ -2067,6 +1703,22 @@ footer {
           <td><div class="ml-note">Only exoskeleton FDA cleared for ABI and MS. Not for home use.</div></td>
         </tr>
 
+        <tr class="ml-divider"><td colspan="11">▸ Wandercraft — FDA-Cleared Medical &amp; Personal (Hands-Free)</td></tr>
+        <tr class="ml-medical" data-mlcat="medical">
+          <td><div class="ml-company">Wandercraft</div><div class="ml-model">Atalante X</div><span class="ml-tag ml-tag-medical">Medical</span><br><span class="ml-tag ml-tag-fda">FDA Cleared</span></td>
+          <td><span class="ml-price ml-price-medical">~$150,000–250,000</span><div class="ml-note">Clinical/rehab centers only; not for personal purchase</div></td>
+          <td class="ml-spec">12 actuated joints (6 per leg: hip flex/ext, hip abduction, knee, ankle)</td><td class="ml-na">Not published</td><td class="ml-na">Not published</td><td class="ml-spec">~50 kg (110 lbs)</td><td class="ml-spec">Session-based</td>
+          <td>Fully autonomous dynamic balance — no crutches or parallel bars; AI-driven gait; therapist tablet control</td><td>Therapist tablet interface</td><td>Rehab: stroke, SCI, neurological gait impairment; NO home use</td>
+          <td><div class="ml-note">FDA 510(k) cleared Nov 2023. Only fully autonomous hands-free exo. Strong SCA3 candidate due to no crutch requirement.</div></td>
+        </tr>
+        <tr class="ml-medical" data-mlcat="medical">
+          <td><div class="ml-company">Wandercraft</div><div class="ml-model">Eve</div><span class="ml-tag ml-tag-medical">Medical</span><br><span style="display:inline-block;background:#f0a50022;color:var(--amber);border:1px solid var(--amber);border-radius:3px;font-size:0.6rem;font-family:var(--font-mono);padding:1px 5px;letter-spacing:0.05em;">Clinical Trial</span></td>
+          <td><span class="ml-price ml-price-medical">TBD</span><div class="ml-note">Personal/home use; Medicare coverage anticipated; ~2026 commercial launch</div></td>
+          <td class="ml-spec">Not published</td><td class="ml-na">Not published</td><td class="ml-na">Not published</td><td class="ml-spec">Not published</td><td class="ml-spec">All-day personal use</td>
+          <td>Self-balancing AI gait (NVIDIA Jetson edge compute); no crutches; 5-session onboarding; real-time adaptive gait across surfaces</td><td>Personal user interface (details TBD)</td><td>Personal/home: SCI T6+; neurological gait impairment; community ambulation</td>
+          <td><div class="ml-note">In clinical trials (Kessler Institute, VA Medical Center NY). FDA filing targeted post-trial. Highest personal-use relevance for SCA3 — self-balancing removes crutch dependency entirely.</div></td>
+        </tr>
+
       </tbody>
     </table>
     </div>
@@ -2176,7 +1828,6 @@ footer {
   <div class="footer-copy">© 2026 Greg Klassen · Leesburg, Virginia · All documentation openly shared</div>
   <ul class="footer-links">
     <li><a href="#about">About</a></li>
-    <li><a href="#labdoc">Lab Plan</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
 </footer>
